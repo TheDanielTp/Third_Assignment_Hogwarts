@@ -2,9 +2,6 @@ public class Hogwarts {
 
     // TODO: Define Attributes
 
-
-
-    // TODO: Define Functionalities
     public void viewAllTeachers() {
         //TODO
     }

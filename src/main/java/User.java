@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Account
+public class User
 {
     protected String userName;
     protected String email;
@@ -16,6 +16,7 @@ public class Account
     protected static ArrayList <String> allEmails     = new ArrayList <> ();
     protected static ArrayList <String> allPasswords  = new ArrayList <> ();
     protected static ArrayList <UUID>   allAccountIDs = new ArrayList <> ();
+    protected static ArrayList <String>  allFullNames = new ArrayList <> ();
 
     public int SignIn (String userName, String password)
     {
