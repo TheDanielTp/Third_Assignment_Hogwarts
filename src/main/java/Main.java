@@ -965,6 +965,7 @@ public class Main
         System.out.println ();
         System.out.println ("1. Assistant Account Setting");
         System.out.println ("2. Review Professor Requests");
+        System.out.println ("3. Review Assistant Requests");
         System.out.println ("4. Create a Course");
         System.out.println ("5. View Courses List");
         System.out.println ("6. View Professors List");
@@ -993,11 +994,15 @@ public class Main
                 System.out.println (skipLine);
                 System.out.println ("Courses List: ");
                 Assistant.viewAllCourses ();
+                System.out.println ("Press Enter to Continue ");
+                scanner.nextLine ();
                 break;
             case 6:
                 System.out.println (skipLine);
                 System.out.println ("Professors List: ");
                 Assistant.viewAllProfessors ();
+                System.out.println ("Press Enter to Continue ");
+                scanner.nextLine ();
                 break;
             case 7:
                 Assistant.removeUser ();

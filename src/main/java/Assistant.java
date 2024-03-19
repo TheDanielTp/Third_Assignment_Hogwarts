@@ -10,9 +10,15 @@ public class Assistant extends Account
 
     protected static String skipLine = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
+    protected static ArrayList <String> allUserNames  = new ArrayList <> ();
+    protected static ArrayList <String> allOwlmails   = new ArrayList <> ();
+    protected static ArrayList <String> allPasswords  = new ArrayList <> ();
+    protected static ArrayList <UUID>   allAccountIDs = new ArrayList <> ();
+    protected static ArrayList <String> allFullNames  = new ArrayList <> ();
+
     protected static ArrayList <Assistant>        allAssistants        = new ArrayList <> ();
     protected static ArrayList <AssistantRequest> allAssistantRequests = new ArrayList <> ();
-    protected static ArrayList <ProfessorRequest>   allProfessorRequests   = new ArrayList <> ();
+    protected static ArrayList <ProfessorRequest> allProfessorRequests = new ArrayList <> ();
 
     private final byte[] salt;
 
@@ -536,7 +542,14 @@ public class Assistant extends Account
     {
         for (Course course : Course.allCourses)
         {
-            System.out.println (course.title + " - Professor " + course.professor.fullName);
+            if (course.professor != null)
+            {
+                System.out.println (course.title + " - Professor " + course.professor.fullName);
+            }
+            else
+            {
+                System.out.println (course.title + " - No assigned professor");
+            }
         }
     }
 
@@ -615,7 +628,10 @@ public class Assistant extends Account
 
         for (Course course : Course.allCourses)
         {
-            course.studentsList.remove (student);
+            if (course.studentsList != null)
+            {
+                course.studentsList.remove (student);
+            }
         }
 
         System.out.println ("Student removed successfully. Returning to menu.");
@@ -653,9 +669,12 @@ public class Assistant extends Account
 
         for (Course course : Course.allCourses)
         {
-            if (course.professor.equals (professor))
+            if (course.professor != null)
             {
-                course.professor = null;
+                if (course.professor.equals (professor))
+                {
+                    course.professor = null;
+                }
             }
         }
 
