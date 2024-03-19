@@ -54,7 +54,7 @@ public class Student extends Account
 
     public static void addStudent (Student student)
     {
-        allStudents.add (student);
+        Student.allStudents.add (student);
     }
 
     /*

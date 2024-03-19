@@ -20,7 +20,8 @@ public class Professor extends Account
     protected     int    score;
     private final byte[] salt;
 
-    protected ArrayList <Course> coursesList = new ArrayList <> ();
+    protected ArrayList <Course> coursesList  = new ArrayList <> ();
+    protected ArrayList <String> commentsList = new ArrayList <> ();
 
     /*
     CONSTRUCTOR FUNCTIONS

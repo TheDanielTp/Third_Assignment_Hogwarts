@@ -51,7 +51,7 @@ public class Main
         System.out.println ("Main Menu");
         System.out.println ();
         System.out.println ("1. Sign Up");
-        System.out.println ("2. Sign in");
+        System.out.println ("2. Sign In");
         System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
@@ -857,8 +857,9 @@ public class Main
         System.out.println ("2. Take course");
         System.out.println ("3. View all taken courses");
         System.out.println ("4. View all professors");
-        System.out.println ("5. Take sorting quiz");
-        System.out.println ("6. Log Out");
+        System.out.println ("5. Rate Teachers");
+        System.out.println ("6. Take sorting quiz");
+        System.out.println ("7. Log Out");
         System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
@@ -880,9 +881,12 @@ public class Main
                 student.viewAllProfessors ();
                 break;
             case 5:
-                student.takeSortingQuiz ();
+                Hogwarts.rateTeacher(student);
                 break;
             case 6:
+                student.takeSortingQuiz ();
+                break;
+            case 7:
                 userAccess = null;
                 student = null;
                 runMenu ();
@@ -1027,7 +1031,7 @@ public class Main
     public static void generateUsers ()
     {
         Student danial = new Student ("TheDanielTp", "prof.danial4@hogwarts.edu", "D_patronus48", "Danial Taghipour");
-        Student.addStudent (student);
+        Student.addStudent (danial);
 
         Assistant Dumbledore = new Assistant ("Dumbledore1881", "Albus.Dumbledore@hogwarts.edu", "Ph0enixR!se21", "Albus Dumbledore");
         Assistant.addAssistant (Dumbledore);

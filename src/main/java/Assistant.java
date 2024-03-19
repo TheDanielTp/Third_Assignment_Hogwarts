@@ -555,17 +555,31 @@ public class Assistant extends Account
 
     public static void viewAllProfessors ()
     {
+        if (Professor.allProfessors.isEmpty ())
+        {
+            return;
+        }
         for (Professor professor : Professor.allProfessors)
         {
-            System.out.println (professor.fullName);
+            if (professor != null)
+            {
+                System.out.println (professor.fullName);
+            }
         }
     }
 
     public static void viewAllStudents ()
     {
+        if (Student.allStudents.isEmpty ())
+        {
+            return;
+        }
         for (Student student : Student.allStudents)
         {
-            System.out.println (student.fullName);
+            if (student != null)
+            {
+                System.out.println (student.fullName);
+            }
         }
     }
 
@@ -587,13 +601,16 @@ public class Assistant extends Account
         {
             case 1:
                 removeStudent ();
+                break;
             case 2:
                 removeProfessor ();
+                break;
             case 0:
                 return;
             default:
                 System.out.println ("Invalid input. Please try again.");
                 removeUser ();
+                break;
         }
     }
 
