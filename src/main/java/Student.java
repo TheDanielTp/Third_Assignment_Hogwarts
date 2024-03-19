@@ -26,10 +26,10 @@ public class Student extends Account
     CONSTRUCTOR FUNCTIONS
     */
 
-    public Student (String userName, String email, String password, String fullName)
+    public Student (String userName, String owlmail, String password, String fullName)
     {
         this.userName = userName;
-        this.email    = email;
+        this.owlmail  = owlmail;
 
         byte[] salt = generateSalt ();
         this.salt = salt;
@@ -39,7 +39,7 @@ public class Student extends Account
         this.fullName = fullName;
 
         Student.allUserNames.add (userName);
-        Student.allEmails.add (email);
+        Student.allOwlmails.add (owlmail);
         Student.allPasswords.add (password);
         Student.allFullNames.add (fullName);
 
@@ -65,8 +65,8 @@ public class Student extends Account
 
         System.out.println ("1. Change Username");
         System.out.println ("2. Change Password");
-        System.out.println ("3. Change Email");
-        System.out.print ("Which option shall you choose: ");
+        System.out.println ("3. Change Owlmail");
+        System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
         scanner.nextLine ();
@@ -84,7 +84,7 @@ public class Student extends Account
                 student.changePassword (student);
                 break;
             case 3:
-                student.changeEmail (student);
+                student.changeOwlmail (student);
                 break;
             default:
                 return;
@@ -280,7 +280,7 @@ public class Student extends Account
         Main.sleep (1000);
     }
 
-    public void changeEmail (Student student)
+    public void changeOwlmail (Student student)
     {
         System.out.println (skipLine);
 
@@ -318,33 +318,33 @@ public class Student extends Account
             password = hashPassword (password, student.salt);
         }
 
-        System.out.print ("New email: ");
-        String email = scanner.nextLine ();
-        if (email.equals ("esc"))
+        System.out.print ("New owlmail: ");
+        String owlmail = scanner.nextLine ();
+        if (owlmail.equals ("esc"))
         {
             return;
         }
 
-        while (Student.validateEmail (email) != 1)
+        while (Student.validateOwlmail (owlmail) != 1)
         {
-            if (Student.validateEmail (email) == 2)
+            if (Student.validateOwlmail (owlmail) == 2)
             {
                 System.out.println ("Unfortunately, this owl is already taken. Present a new owl, or sign in if you possess an existing account.");
-                System.out.print ("New email: ");
+                System.out.print ("New owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     return;
                 }
             }
-            else if (Student.validateEmail (email) == 0)
+            else if (Student.validateOwlmail (owlmail) == 0)
             {
                 System.out.println ("Unfortunately, this owl can't be accepted! Provide another owl to continue.");
-                System.out.print ("New email: ");
+                System.out.print ("New owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     return;
                 }
@@ -355,20 +355,20 @@ public class Student extends Account
         {
             if (password.equals (allPasswords.get (i)))
             {
-                allEmails.set (i, email);
+                allOwlmails.set (i, owlmail);
             }
         }
-        student.email = email;
+        student.owlmail = owlmail;
 
-        System.out.println ("Email changed successfully");
+        System.out.println ("Owlmail changed successfully");
         Main.sleep (1000);
     }
 
-    public static Student findStudentByEmail (String email)
+    public static Student findStudentByOwlmail (String owlmail)
     {
         for (Student s : allStudents)
         {
-            if (s.email.equals (email))
+            if (s.owlmail.equals (owlmail))
             {
                 return s;
             }
@@ -438,21 +438,21 @@ public class Student extends Account
         System.out.println ("Courses List:");
         for (Course course : coursesList)
         {
-            System.out.println (course.title + " - Professor " + course.teacher.fullName);
+            System.out.println (course.title + " - Professor " + course.professor.fullName);
         }
         System.out.println ("Press Enter to Continue ");
         scanner.nextLine ();
     }
 
-    public void viewAllTeachers ()
+    public void viewAllProfessors ()
     {
         Course[] coursesListArray = new Course[(coursesList.size ())];
         coursesList.toArray (coursesListArray);
 
-        System.out.println ("Teachers List:");
+        System.out.println ("Professors List:");
         for (Course course : coursesListArray)
         {
-            System.out.println ("Professor " + course.teacher.fullName);
+            System.out.println ("Professor " + course.professor.fullName);
         }
         System.out.println ("Press Enter to Continue ");
         scanner.nextLine ();
@@ -532,7 +532,7 @@ public class Student extends Account
                             "0 Tell Professor Flitwick the truth. If your classmate is prepared to win by cheating, he deserves to be found out. \n" +
                                     "Also, as you are both in the same house, any points he loses will be regained by you, for coming first in his place.",
                             "2 You would not wait to be asked to tell Professor Flitwick the truth. \n" +
-                                    "If you knew that somebody was using a forbidden quill, you would tell the teacher before the exam started."},
+                                    "If you knew that somebody was using a forbidden quill, you would tell the professor before the exam started."},
                     {"0 Attempt to confuse the troll into letting all three of you pass without fighting?",
                             "3 Suggest drawing lots to decide which of you will fight?",
                             "2 Suggest that all three of you should fight without telling the troll?",
@@ -576,7 +576,7 @@ public class Student extends Account
                     System.out.println ((j + 1) + "- " + parts[1]);
                 }
 
-                System.out.print ("Which option shall you choose, young wizard: ");
+                System.out.print ("Enter your choice, young wizard: ");
                 int answerIndex = scanner.nextInt () - 1;
 
                 if (answerIndex >= 0 && answerIndex < answers[i].length)
@@ -660,30 +660,30 @@ public class Student extends Account
         return 1;
     }
 
-    public static int validateEmail (String email)
+    public static int validateOwlmail (String owlmail)
     {
         String regex = "^[a-zA-Z0-9_+.&*-]+(?:\\.[a-zA-Z0-9_+.&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
         Pattern pattern = Pattern.compile (regex);
-        Matcher matcher = pattern.matcher (email);
+        Matcher matcher = pattern.matcher (owlmail);
 
         if (! matcher.find ())
         {
             return 0;
         }
 
-        if (Student.allEmails.isEmpty ())
+        if (Student.allOwlmails.isEmpty ())
         {
             return 1;
         }
         else
         {
-            String[] allEmailsArray = new String[Student.allEmails.size ()];
-            Student.allEmails.toArray (allEmailsArray);
+            String[] allOwlmailsArray = new String[Student.allOwlmails.size ()];
+            Student.allOwlmails.toArray (allOwlmailsArray);
 
-            for (String s : allEmailsArray)
+            for (String s : allOwlmailsArray)
             {
-                if (email.equals (s))
+                if (owlmail.equals (s))
                 {
                     return 2;
                 }
@@ -711,16 +711,16 @@ public class Student extends Account
         return 1;
     }
 
-    public static int findUserNumber (String email)
+    public static int findUserNumber (String owlmail)
     {
         int userNumber = 0;
 
-        String[] allEmailsArray = new String[Student.allEmails.size ()];
-        Student.allEmails.toArray (allEmailsArray);
+        String[] allOwlmailsArray = new String[Student.allOwlmails.size ()];
+        Student.allOwlmails.toArray (allOwlmailsArray);
 
-        for (int i = 0; i < Student.allEmails.size (); i++)
+        for (int i = 0; i < Student.allOwlmails.size (); i++)
         {
-            if (email.equals (allEmailsArray[i]))
+            if (owlmail.equals (allOwlmailsArray[i]))
             {
                 userNumber = i;
             }

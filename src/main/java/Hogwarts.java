@@ -2,15 +2,15 @@ import java.util.ArrayList;
 
 public class Hogwarts
 {
-    protected static ArrayList <Teacher> allTeachers = new ArrayList <> ();
+    protected static ArrayList <Professor> allProfessors = new ArrayList <> ();
     protected static ArrayList <Student> allStudents = new ArrayList <> ();
     protected static ArrayList <Course>  allCourses  = new ArrayList <> ();
 
     public static void viewHogwartsData ()
     {
         setAttributes ();
-        System.out.println ("Teachers List:");
-        viewAllTeachers ();
+        System.out.println ("Professors List:");
+        viewAllProfessors ();
         System.out.println ("Students List:");
         viewAllStudents ();
         System.out.println ("Courses List: ");
@@ -19,16 +19,16 @@ public class Hogwarts
 
     public static void setAttributes ()
     {
-        allTeachers = Teacher.allTeachers;
+        allProfessors = Professor.allProfessors;
         allStudents = Student.allStudents;
         allCourses  = Course.allCourses;
     }
 
-    public static void viewAllTeachers ()
+    public static void viewAllProfessors ()
     {
-        for (Teacher teacher : allTeachers)
+        for (Professor professor : allProfessors)
         {
-            System.out.println (teacher.fullName);
+            System.out.println (professor.fullName);
         }
     }
 

@@ -1,14 +1,14 @@
 public class AssistantRequest
 {
     protected String userName;
-    protected String email;
+    protected String owlmail;
     protected String password;
     protected String fullName;
 
-    public AssistantRequest (String userName, String email, String password, String fullName)
+    public AssistantRequest (String userName, String owlmail, String password, String fullName)
     {
         this.userName = userName;
-        this.email    = email;
+        this.owlmail    = owlmail;
         this.password = password;
         this.fullName = fullName;
     }

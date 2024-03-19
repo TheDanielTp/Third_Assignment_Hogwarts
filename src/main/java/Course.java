@@ -5,13 +5,13 @@ public class Course
 {
     protected String  title;
     protected UUID    courseID;
-    protected Teacher teacher;
+    protected Professor professor;
 
     protected ArrayList <Student>      studentsList       = new ArrayList <> ();
     protected ArrayList <StudentScore> studentsScoresList = new ArrayList <> ();
 
     protected static ArrayList <String>  allTitles   = new ArrayList <> ();
-    protected static ArrayList <Teacher> allTeachers = new ArrayList <> ();
+    protected static ArrayList <Professor> allProfessors = new ArrayList <> ();
     protected static ArrayList <Course>  allCourses  = new ArrayList <> ();
 
     /*
@@ -23,32 +23,32 @@ public class Course
         this.title = title;
         allTitles.add (title);
 
-        this.teacher = null;
+        this.professor = null;
 
         this.courseID = UUID.randomUUID ();
     }
 
-    public Course (String title, Teacher teacher)
+    public Course (String title, Professor professor)
     {
         this.title = title;
         allTitles.add (title);
 
-        this.teacher = teacher;
-        allTeachers.add (teacher);
+        this.professor = professor;
+        allProfessors.add (professor);
 
         this.courseID = UUID.randomUUID ();
     }
 
-    public void assignTeacher (Teacher teacher)
+    public void assignProfessor (Professor professor)
     {
-        this.teacher = teacher;
-        allTeachers.add (teacher);
+        this.professor = professor;
+        allProfessors.add (professor);
     }
 
-    public static void forceTeacher (Course course, Teacher teacher)
+    public static void forceProfessor (Course course, Professor professor)
     {
-        teacher.coursesList.add (course);
-        allTeachers.add (teacher);
+        professor.coursesList.add (course);
+        allProfessors.add (professor);
     }
 
     /*
@@ -120,7 +120,7 @@ public class Course
 
         for (Course course : allCoursesArray)
         {
-            if (course.teacher == null)
+            if (course.professor == null)
             {
                 System.out.println (course.title);
             }
@@ -134,9 +134,9 @@ public class Course
 
         for (Course course : allCoursesArray)
         {
-            if (course.teacher != null)
+            if (course.professor != null)
             {
-                System.out.println (course.title + " - Professor " + course.teacher.getFullName ());
+                System.out.println (course.title + " - Professor " + course.professor.getFullName ());
             }
         }
     }

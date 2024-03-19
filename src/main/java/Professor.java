@@ -4,13 +4,13 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Teacher extends Account
+public class Professor extends Account
 {
     static Scanner scanner = new Scanner (System.in);
 
     protected static String skipLine = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
-    protected static ArrayList <Teacher> allTeachers = new ArrayList <> ();
+    protected static ArrayList <Professor> allProfessors = new ArrayList <> ();
 
     protected     int    score;
     private final byte[] salt;
@@ -21,10 +21,10 @@ public class Teacher extends Account
     CONSTRUCTOR FUNCTIONS
     */
 
-    protected Teacher (String userName, String email, String password, String fullName)
+    protected Professor (String userName, String owlmail, String password, String fullName)
     {
         this.userName = userName;
-        this.email    = email;
+        this.owlmail  = owlmail;
 
         byte[] salt = generateSalt ();
         this.salt = salt;
@@ -35,35 +35,35 @@ public class Teacher extends Account
 
         score = 50;
 
-        Teacher.allUserNames.add (userName);
-        Teacher.allEmails.add (email);
-        Teacher.allPasswords.add (password);
-        Teacher.allFullNames.add (fullName);
+        Professor.allUserNames.add (userName);
+        Professor.allOwlmails.add (owlmail);
+        Professor.allPasswords.add (password);
+        Professor.allFullNames.add (fullName);
 
         this.accountID = UUID.randomUUID ();
-        Teacher.allAccountIDs.add (accountID);
+        Professor.allAccountIDs.add (accountID);
     }
 
-    public static void addTeacher (Teacher teacher)
+    public static void addProfessor (Professor professor)
     {
-        allTeachers.add (teacher);
+        allProfessors.add (professor);
     }
 
     /*
     ACCOUNT FUNCTIONS
     */
 
-    public void accountSetting (Teacher teacher)
+    public void accountSetting (Professor professor)
     {
         System.out.println (skipLine);
 
         System.out.println ("Hogwarts School Datacenter.");
-        System.out.println ("Teacher account setting");
+        System.out.println ("Professor account setting");
 
         System.out.println ("1. Change Username");
         System.out.println ("2. Change Password");
-        System.out.println ("3. Change Email");
-        System.out.print ("Which option shall you choose: ");
+        System.out.println ("3. Change Owlmail");
+        System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
         scanner.nextLine ();
@@ -75,26 +75,26 @@ public class Teacher extends Account
         switch (menuInput)
         {
             case 1:
-                teacher.changeUsername (teacher);
+                professor.changeUsername (professor);
                 break;
             case 2:
-                teacher.changePassword (teacher);
+                professor.changePassword (professor);
                 break;
             case 3:
-                teacher.changeEmail (teacher);
+                professor.changeOwlmail (professor);
                 break;
             default:
                 return;
         }
-        accountSetting (teacher);
+        accountSetting (professor);
     }
 
-    public void changeUsername (Teacher teacher)
+    public void changeUsername (Professor professor)
     {
         System.out.println (skipLine);
 
         System.out.println ("Hogwarts School Datacenter.");
-        System.out.println ("Teacher change username");
+        System.out.println ("Professor change username");
 
         System.out.print ("Current password: ");
         String password = scanner.nextLine ();
@@ -102,11 +102,11 @@ public class Teacher extends Account
         {
             return;
         }
-        password = hashPassword (password, teacher.salt);
+        password = hashPassword (password, professor.salt);
 
         int countOfIncorrectAttempts = 0;
 
-        while (! password.equals (teacher.password))
+        while (! password.equals (professor.password))
         {
             countOfIncorrectAttempts++;
             if (countOfIncorrectAttempts < 5)
@@ -124,7 +124,7 @@ public class Teacher extends Account
             {
                 return;
             }
-            password = hashPassword (password, teacher.salt);
+            password = hashPassword (password, professor.salt);
         }
 
         System.out.print ("New username: ");
@@ -167,13 +167,13 @@ public class Teacher extends Account
                 allUserNames.set (i, userName);
             }
         }
-        teacher.userName = userName;
+        professor.userName = userName;
 
         System.out.println ("Username changed successfully");
         Main.sleep (1000);
     }
 
-    public void changePassword (Teacher teacher)
+    public void changePassword (Professor professor)
     {
         System.out.println (skipLine);
 
@@ -186,11 +186,11 @@ public class Teacher extends Account
         {
             return;
         }
-        password = hashPassword (password, teacher.salt);
+        password = hashPassword (password, professor.salt);
 
         int countOfIncorrectAttempts = 0;
 
-        while (! password.equals (teacher.password))
+        while (! password.equals (professor.password))
         {
             countOfIncorrectAttempts++;
             if (countOfIncorrectAttempts < 5)
@@ -208,7 +208,7 @@ public class Teacher extends Account
             {
                 return;
             }
-            password = hashPassword (password, teacher.salt);
+            password = hashPassword (password, professor.salt);
         }
 
         System.out.print ("New Password: ");
@@ -269,16 +269,16 @@ public class Teacher extends Account
         {
             if (password.equals (allPasswords.get (i)))
             {
-                allPasswords.set (i, hashPassword (firstPassword, teacher.salt));
+                allPasswords.set (i, hashPassword (firstPassword, professor.salt));
             }
         }
-        teacher.password = hashPassword (firstPassword, teacher.salt);
+        professor.password = hashPassword (firstPassword, professor.salt);
 
         System.out.println ("Password changed successfully");
         Main.sleep (1000);
     }
 
-    public void changeEmail (Teacher teacher)
+    public void changeOwlmail (Professor professor)
     {
         System.out.println (skipLine);
 
@@ -291,11 +291,11 @@ public class Teacher extends Account
         {
             return;
         }
-        password = hashPassword (password, teacher.salt);
+        password = hashPassword (password, professor.salt);
 
         int countOfIncorrectAttempts = 0;
 
-        while (! password.equals (teacher.password))
+        while (! password.equals (professor.password))
         {
             countOfIncorrectAttempts++;
             if (countOfIncorrectAttempts < 5)
@@ -313,36 +313,36 @@ public class Teacher extends Account
             {
                 return;
             }
-            password = hashPassword (password, teacher.salt);
+            password = hashPassword (password, professor.salt);
         }
 
-        System.out.print ("New email: ");
-        String email = scanner.nextLine ();
-        if (email.equals ("esc"))
+        System.out.print ("New owlmail: ");
+        String owlmail = scanner.nextLine ();
+        if (owlmail.equals ("esc"))
         {
             return;
         }
 
-        while (Student.validateEmail (email) != 1)
+        while (Student.validateOwlmail (owlmail) != 1)
         {
-            if (Student.validateEmail (email) == 2)
+            if (Student.validateOwlmail (owlmail) == 2)
             {
                 System.out.println ("Unfortunately, this owl is already taken. Present a new owl, or sign in if you possess an existing account.");
-                System.out.print ("New email: ");
+                System.out.print ("New owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     return;
                 }
             }
-            else if (Student.validateEmail (email) == 0)
+            else if (Student.validateOwlmail (owlmail) == 0)
             {
                 System.out.println ("Unfortunately, this owl can't be accepted! Provide another owl to continue.");
-                System.out.print ("New email: ");
+                System.out.print ("New owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     return;
                 }
@@ -353,34 +353,34 @@ public class Teacher extends Account
         {
             if (password.equals (allPasswords.get (i)))
             {
-                allEmails.set (i, email);
+                allOwlmails.set (i, owlmail);
             }
         }
-        teacher.email = email;
+        professor.owlmail = owlmail;
 
-        System.out.println ("Email changed successfully");
+        System.out.println ("Owlmail changed successfully");
         Main.sleep (1000);
     }
 
-    public static Teacher findTeacherByEmail (String email)
+    public static Professor findProfessorByOwlmail (String owlmail)
     {
-        for (Teacher teacher : allTeachers)
+        for (Professor professor : allProfessors)
         {
-            if (teacher.email.equals (email))
+            if (professor.owlmail.equals (owlmail))
             {
-                return teacher;
+                return professor;
             }
         }
         return null;
     }
 
-    public static Teacher findTeacherByName (String fullName)
+    public static Professor findProfessorByName (String fullName)
     {
-        for (Teacher teacher : allTeachers)
+        for (Professor professor : allProfessors)
         {
-            if (teacher.fullName.equals (fullName))
+            if (professor.fullName.equals (fullName))
             {
-                return teacher;
+                return professor;
             }
         }
         return null;
@@ -390,7 +390,7 @@ public class Teacher extends Account
     TEACHER FUNCTIONS
     */
 
-    public void takeCourse (Teacher teacher)
+    public void takeCourse (Professor professor)
     {
         System.out.println (skipLine);
 
@@ -423,8 +423,8 @@ public class Teacher extends Account
 
         Course course = Course.findCourse (courseName);
         assert course != null;
-        course.assignTeacher (teacher);
-        teacher.coursesList.add (course);
+        course.assignProfessor (professor);
+        professor.coursesList.add (course);
 
         System.out.println ("Course enrolled successfully. May your teachings be as fruitful as a field of Mandrakes in springtime.");
         Main.sleep (1000);
@@ -548,7 +548,7 @@ public class Teacher extends Account
         System.out.println ("1) Score another student");
         System.out.println ("2) Change course");
         System.out.println ("3) Return to menu");
-        System.out.print ("Which option shall you choose: ");
+        System.out.print ("Enter your choice: ");
 
         int input = scanner.nextInt ();
         scanner.nextLine ();
@@ -559,7 +559,7 @@ public class Teacher extends Account
             case 2:
                 selectCourse ();
             case 3:
-                Main.teacherMenu ();
+                Main.professorMenu ();
             default:
                 scoreStudents (course);
         }
@@ -576,13 +576,13 @@ public class Teacher extends Account
             return 0;
         }
 
-        if (Teacher.allUserNames.isEmpty ())
+        if (Professor.allUserNames.isEmpty ())
         {
             return 1;
         }
 
-        String[] allUserNamesArray = new String[Teacher.allUserNames.size ()];
-        Teacher.allUserNames.toArray (allUserNamesArray);
+        String[] allUserNamesArray = new String[Professor.allUserNames.size ()];
+        Professor.allUserNames.toArray (allUserNamesArray);
 
         for (String s : allUserNamesArray)
         {
@@ -594,30 +594,30 @@ public class Teacher extends Account
         return 1;
     }
 
-    public static int validateEmail (String email)
+    public static int validateOwlmail (String owlmail)
     {
         String regex = "^[a-zA-Z0-9_+.&*-]+(?:\\.[a-zA-Z0-9_+.&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
         Pattern pattern = Pattern.compile (regex);
-        Matcher matcher = pattern.matcher (email);
+        Matcher matcher = pattern.matcher (owlmail);
 
         if (! matcher.find ())
         {
             return 0;
         }
 
-        if (Teacher.allEmails.isEmpty ())
+        if (Professor.allOwlmails.isEmpty ())
         {
             return 1;
         }
         else
         {
-            String[] allEmailsArray = new String[Teacher.allEmails.size ()];
-            Teacher.allEmails.toArray (allEmailsArray);
+            String[] allOwlmailsArray = new String[Professor.allOwlmails.size ()];
+            Professor.allOwlmails.toArray (allOwlmailsArray);
 
-            for (String s : allEmailsArray)
+            for (String s : allOwlmailsArray)
             {
-                if (email.equals (s))
+                if (owlmail.equals (s))
                 {
                     return 2;
                 }
@@ -645,16 +645,16 @@ public class Teacher extends Account
         return 1;
     }
 
-    public static int findUserNumber (String email)
+    public static int findUserNumber (String owlmail)
     {
         int userNumber = 0;
 
-        String[] allEmailsArray = new String[Teacher.allEmails.size ()];
-        Teacher.allEmails.toArray (allEmailsArray);
+        String[] allOwlmailsArray = new String[Professor.allOwlmails.size ()];
+        Professor.allOwlmails.toArray (allOwlmailsArray);
 
-        for (int i = 0; i < Teacher.allEmails.size (); i++)
+        for (int i = 0; i < Professor.allOwlmails.size (); i++)
         {
-            if (email.equals (allEmailsArray[i]))
+            if (owlmail.equals (allOwlmailsArray[i]))
             {
                 userNumber = i;
             }
@@ -665,8 +665,8 @@ public class Teacher extends Account
 
     public boolean checkPassword (String password, int userNumber)
     {
-        String[] allPasswordsArray = new String[Teacher.allPasswords.size ()];
-        Teacher.allPasswords.toArray (allPasswordsArray);
+        String[] allPasswordsArray = new String[Professor.allPasswords.size ()];
+        Professor.allPasswords.toArray (allPasswordsArray);
 
         password = hashPassword (password, salt);
 

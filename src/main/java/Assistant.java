@@ -12,7 +12,7 @@ public class Assistant extends Account
 
     protected static ArrayList <Assistant>        allAssistants        = new ArrayList <> ();
     protected static ArrayList <AssistantRequest> allAssistantRequests = new ArrayList <> ();
-    protected static ArrayList <TeacherRequest>   allTeacherRequests   = new ArrayList <> ();
+    protected static ArrayList <ProfessorRequest>   allProfessorRequests   = new ArrayList <> ();
 
     private final byte[] salt;
 
@@ -20,10 +20,10 @@ public class Assistant extends Account
     CONSTRUCTOR FUNCTIONS
     */
 
-    protected Assistant (String username, String email, String password, String fullName)
+    protected Assistant (String username, String owlmail, String password, String fullName)
     {
         this.userName = username;
-        this.email    = email;
+        this.owlmail  = owlmail;
 
         byte[] salt = generateSalt ();
         this.salt = salt;
@@ -33,7 +33,7 @@ public class Assistant extends Account
         this.fullName = fullName;
 
         Assistant.allUserNames.add (userName);
-        Assistant.allEmails.add (email);
+        Assistant.allOwlmails.add (owlmail);
         Assistant.allPasswords.add (password);
         Assistant.allFullNames.add (fullName);
 
@@ -50,11 +50,11 @@ public class Assistant extends Account
     ACCOUNT FUNCTIONS
     */
 
-    public static Assistant findAssistant (String email)
+    public static Assistant findAssistant (String owlmail)
     {
         for (Assistant assistant : allAssistants)
         {
-            if (assistant.email.equals (email))
+            if (assistant.owlmail.equals (owlmail))
             {
                 return assistant;
             }
@@ -71,7 +71,7 @@ public class Assistant extends Account
 
         System.out.println ("1. Change Username");
         System.out.println ("2. Change Password");
-        System.out.println ("3. Change Email");
+        System.out.println ("3. Change Owlmail");
         System.out.print ("Which option shall you choose: ");
 
         int menuInput = scanner.nextInt ();
@@ -90,7 +90,7 @@ public class Assistant extends Account
                 assistant.changePassword (assistant);
                 break;
             case 3:
-                assistant.changeEmail (assistant);
+                assistant.changeOwlmail (assistant);
                 break;
             default:
                 return;
@@ -286,7 +286,7 @@ public class Assistant extends Account
         Main.sleep (1000);
     }
 
-    public void changeEmail (Assistant assistant)
+    public void changeOwlmail (Assistant assistant)
     {
         System.out.println (skipLine);
 
@@ -324,33 +324,33 @@ public class Assistant extends Account
             password = hashPassword (password, assistant.salt);
         }
 
-        System.out.print ("New email: ");
-        String email = scanner.nextLine ();
-        if (email.equals ("esc"))
+        System.out.print ("New owlmail: ");
+        String owlmail = scanner.nextLine ();
+        if (owlmail.equals ("esc"))
         {
             return;
         }
 
-        while (Student.validateEmail (email) != 1)
+        while (Student.validateOwlmail (owlmail) != 1)
         {
-            if (Student.validateEmail (email) == 2)
+            if (Student.validateOwlmail (owlmail) == 2)
             {
                 System.out.println ("Unfortunately, this owl is already taken. Present a new owl, or sign in if you possess an existing account.");
-                System.out.print ("New email: ");
+                System.out.print ("New owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     return;
                 }
             }
-            else if (Student.validateEmail (email) == 0)
+            else if (Student.validateOwlmail (owlmail) == 0)
             {
                 System.out.println ("Unfortunately, this owl can't be accepted! Provide another owl to continue.");
-                System.out.print ("New email: ");
+                System.out.print ("New owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     return;
                 }
@@ -361,12 +361,12 @@ public class Assistant extends Account
         {
             if (password.equals (allPasswords.get (i)))
             {
-                allEmails.set (i, email);
+                allOwlmails.set (i, owlmail);
             }
         }
-        assistant.email = email;
+        assistant.owlmail = owlmail;
 
-        System.out.println ("Email changed successfully");
+        System.out.println ("Owlmail changed successfully");
         Main.sleep (1000);
     }
 
@@ -406,21 +406,21 @@ public class Assistant extends Account
         AssistantRequest assistantRequest = AssistantRequest.findRequest (requestName);
 
         assert assistantRequest != null;
-        Assistant assistant = new Assistant (assistantRequest.userName, assistantRequest.email, assistantRequest.password, assistantRequest.fullName);
+        Assistant assistant = new Assistant (assistantRequest.userName, assistantRequest.owlmail, assistantRequest.password, assistantRequest.fullName);
         Assistant.allAssistants.add (assistant);
 
         System.out.println ("Assistant added successfully");
         Main.sleep (1000);
     }
 
-    public static void viewTeacherRequests ()
+    public static void viewProfessorRequests ()
     {
         System.out.println (skipLine);
 
-        System.out.println ("Teacher Requests List: ");
-        for (TeacherRequest teacherRequest : allTeacherRequests)
+        System.out.println ("Professor Requests List: ");
+        for (ProfessorRequest professorRequest : allProfessorRequests)
         {
-            System.out.println (teacherRequest.fullName);
+            System.out.println (professorRequest.fullName);
         }
         System.out.print ("Select Request: ");
 
@@ -430,7 +430,7 @@ public class Assistant extends Account
             return;
         }
 
-        while (TeacherRequest.findRequest (requestName) == null)
+        while (ProfessorRequest.findRequest (requestName) == null)
         {
             System.out.println ("Request not found. Please try again.");
             System.out.print ("Select Request: ");
@@ -442,13 +442,13 @@ public class Assistant extends Account
             }
         }
 
-        TeacherRequest teacherRequest = TeacherRequest.findRequest (requestName);
+        ProfessorRequest professorRequest = ProfessorRequest.findRequest (requestName);
 
-        assert teacherRequest != null;
-        Teacher teacher = new Teacher (teacherRequest.userName, teacherRequest.email, teacherRequest.password, teacherRequest.fullName);
-        Teacher.allTeachers.add (teacher);
+        assert professorRequest != null;
+        Professor professor = new Professor (professorRequest.userName, professorRequest.owlmail, professorRequest.password, professorRequest.fullName);
+        Professor.allProfessors.add (professor);
 
-        System.out.println ("Teacher added successfully");
+        System.out.println ("Professor added successfully");
         Main.sleep (1000);
     }
 
@@ -480,7 +480,7 @@ public class Assistant extends Account
             }
         }
 
-        System.out.println ("Course created successfully. Do you wish to assign a teacher to the course?");
+        System.out.println ("Course created successfully. Do you wish to assign a professor to the course?");
         System.out.println ("1. Yes");
         System.out.println ("2. No");
         System.out.print ("Enter your choice: ");
@@ -495,9 +495,9 @@ public class Assistant extends Account
             return;
         }
 
-        System.out.println ("Teachers List: ");
-        Assistant.viewAllTeachers ();
-        System.out.print ("Enter the name of the teacher: ");
+        System.out.println ("Professors List: ");
+        Assistant.viewAllProfessors ();
+        System.out.print ("Enter the name of the professor: ");
 
         String fullName = scanner.nextLine ();
         if (fullName.equals ("esc"))
@@ -505,10 +505,10 @@ public class Assistant extends Account
             return;
         }
 
-        while (Teacher.findTeacherByName (fullName) == null)
+        while (Professor.findProfessorByName (fullName) == null)
         {
-            System.out.println ("Teacher not found. Please try again.");
-            System.out.print ("Enter the name of the teacher: ");
+            System.out.println ("Professor not found. Please try again.");
+            System.out.print ("Enter the name of the professor: ");
 
             fullName = scanner.nextLine ();
             if (fullName.equals ("esc"))
@@ -517,14 +517,14 @@ public class Assistant extends Account
             }
         }
 
-        Teacher teacher = Teacher.findTeacherByName (fullName);
-        Course course = new Course (title, teacher);
+        Professor professor = Professor.findProfessorByName (fullName);
+        Course course = new Course (title, professor);
         Course.allCourses.add (course);
 
-        assert teacher != null;
-        Course.forceTeacher (course, teacher);
+        assert professor != null;
+        Course.forceProfessor (course, professor);
 
-        System.out.println ("Teacher assigned successfully. Returning to menu.");
+        System.out.println ("Professor assigned successfully. Returning to menu.");
         Main.sleep (1000);
     }
 
@@ -532,15 +532,15 @@ public class Assistant extends Account
     {
         for (Course course : Course.allCourses)
         {
-            System.out.println (course.title + " - Professor " + course.teacher.fullName);
+            System.out.println (course.title + " - Professor " + course.professor.fullName);
         }
     }
 
-    public static void viewAllTeachers ()
+    public static void viewAllProfessors ()
     {
-        for (Teacher teacher : Teacher.allTeachers)
+        for (Professor professor : Professor.allProfessors)
         {
-            System.out.println (teacher.fullName);
+            System.out.println (professor.fullName);
         }
     }
 
@@ -560,7 +560,7 @@ public class Assistant extends Account
         System.out.println ("Remove User Menu");
         System.out.println ();
         System.out.println ("1. Student");
-        System.out.println ("2. Teacher");
+        System.out.println ("2. Professor");
         System.out.print ("Which option shall you choose: ");
 
         int input = scanner.nextInt ();
@@ -571,11 +571,11 @@ public class Assistant extends Account
             case 1:
                 removeStudent ();
             case 2:
-                removeTeacher ();
+                removeProfessor ();
             case 0:
                 return;
             default:
-                System.out.println ("Incorrect wand movement! Make another selection.");
+                System.out.println ("Invalid input. Please try again.");
                 removeUser ();
         }
     }
@@ -618,13 +618,13 @@ public class Assistant extends Account
         Main.sleep (1000);
     }
 
-    public static void removeTeacher ()
+    public static void removeProfessor ()
     {
         System.out.println (skipLine);
 
-        System.out.println ("Teachers List: ");
-        viewAllTeachers ();
-        System.out.print ("Enter the name of the teacher: ");
+        System.out.println ("Professors List: ");
+        viewAllProfessors ();
+        System.out.print ("Enter the name of the professor: ");
 
         String fullName = scanner.nextLine ();
         if (fullName.equals ("esc"))
@@ -632,10 +632,10 @@ public class Assistant extends Account
             return;
         }
 
-        while (Teacher.findTeacherByName (fullName) == null)
+        while (Professor.findProfessorByName (fullName) == null)
         {
             System.out.println ("There's no record of such professor in archives. Please try again.");
-            System.out.print ("Enter the name of the teacher: ");
+            System.out.print ("Enter the name of the professor: ");
 
             fullName = scanner.nextLine ();
             if (fullName.equals ("esc"))
@@ -644,18 +644,18 @@ public class Assistant extends Account
             }
         }
 
-        Teacher teacher = Teacher.findTeacherByName (fullName);
-        Teacher.allTeachers.remove (teacher);
+        Professor professor = Professor.findProfessorByName (fullName);
+        Professor.allProfessors.remove (professor);
 
         for (Course course : Course.allCourses)
         {
-            if (course.teacher.equals (teacher))
+            if (course.professor.equals (professor))
             {
-                course.teacher = null;
+                course.professor = null;
             }
         }
 
-        System.out.println ("Teacher removed successfully. Returning to menu.");
+        System.out.println ("Professor removed successfully. Returning to menu.");
         Main.sleep (1000);
     }
 
@@ -688,30 +688,30 @@ public class Assistant extends Account
         return 1;
     }
 
-    public static int validateEmail (String email)
+    public static int validateOwlmail (String owlmail)
     {
         String regex = "^[a-zA-Z0-9_+.&*-]+(?:\\.[a-zA-Z0-9_+.&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
         Pattern pattern = Pattern.compile (regex);
-        Matcher matcher = pattern.matcher (email);
+        Matcher matcher = pattern.matcher (owlmail);
 
         if (! matcher.find ())
         {
             return 0;
         }
 
-        if (Assistant.allEmails.isEmpty ())
+        if (Assistant.allOwlmails.isEmpty ())
         {
             return 1;
         }
         else
         {
-            String[] allEmailsArray = new String[Assistant.allEmails.size ()];
-            Assistant.allEmails.toArray (allEmailsArray);
+            String[] allOwlmailsArray = new String[Assistant.allOwlmails.size ()];
+            Assistant.allOwlmails.toArray (allOwlmailsArray);
 
-            for (String s : allEmailsArray)
+            for (String s : allOwlmailsArray)
             {
-                if (email.equals (s))
+                if (owlmail.equals (s))
                 {
                     return 2;
                 }
@@ -739,16 +739,16 @@ public class Assistant extends Account
         return 1;
     }
 
-    public static int findUserNumber (String email)
+    public static int findUserNumber (String owlmail)
     {
         int userNumber = 0;
 
-        String[] allEmailsArray = new String[Assistant.allEmails.size ()];
-        Assistant.allEmails.toArray (allEmailsArray);
+        String[] allOwlmailsArray = new String[Assistant.allOwlmails.size ()];
+        Assistant.allOwlmails.toArray (allOwlmailsArray);
 
-        for (int i = 0; i < Assistant.allEmails.size (); i++)
+        for (int i = 0; i < Assistant.allOwlmails.size (); i++)
         {
-            if (email.equals (allEmailsArray[i]))
+            if (owlmail.equals (allOwlmailsArray[i]))
             {
                 userNumber = i;
             }

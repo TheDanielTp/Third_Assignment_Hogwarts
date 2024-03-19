@@ -8,7 +8,7 @@ public class Main
     static String userAccess = null;
 
     static Student   student;
-    static Teacher   teacher;
+    static Professor   professor;
     static Assistant assistant;
 
     /*
@@ -52,7 +52,7 @@ public class Main
         System.out.println ();
         System.out.println ("1. Sign Up");
         System.out.println ("2. Sign in");
-        System.out.print ("Which option shall you choose: ");
+        System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
         scanner.nextLine ();
@@ -67,7 +67,7 @@ public class Main
                 return; //exits the program
             default:
             {
-                System.out.print ("Incorrect wand movement! Make another selection.");
+                System.out.print ("Invalid input. Please try again.");
                 sleep (2000);
                 runMenu ();
             }
@@ -86,9 +86,9 @@ public class Main
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Sign Up Menu");
         System.out.println ("1. Sign Up as Student");
-        System.out.println ("2. Sign Up as Teacher");
+        System.out.println ("2. Sign Up as Professor");
         System.out.println ("3. Sign Up as Assistant");
-        System.out.print ("Which option shall you choose: ");
+        System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
         scanner.nextLine ();
@@ -99,7 +99,7 @@ public class Main
                 signUpStudent ();
                 break;
             case 2:
-                signUpTeacher ();
+                signUpProfessor ();
                 break;
             case 3:
                 signUpAssistant ();
@@ -107,7 +107,7 @@ public class Main
             case 0:
                 return;
             default:
-                System.out.print ("Incorrect wand movement! Make another selection.");
+                System.out.print ("Invalid input. Please try again.");
                 sleep (2000);
                 signUpMenu ();
                 break;
@@ -122,33 +122,33 @@ public class Main
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student Sign Up");
 
-        System.out.print ("Email: ");
-        String email = scanner.nextLine ();
-        if (email.equals ("esc"))
+        System.out.print ("Owlmail: ");
+        String owlmail = scanner.nextLine ();
+        if (owlmail.equals ("esc"))
         {
             runMenu ();
         }
 
-        while (Student.validateEmail (email) != 1)
+        while (Student.validateOwlmail (owlmail) != 1)
         {
-            if (Student.validateEmail (email) == 2)
+            if (Student.validateOwlmail (owlmail) == 2)
             {
                 System.out.println ("Unfortunately, this owl is already taken. Present a new owl, or sign in if you possess an existing account.");
-                System.out.print ("Email: ");
+                System.out.print ("Owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     runMenu ();
                 }
             }
-            else if (Student.validateEmail (email) == 0)
+            else if (Student.validateOwlmail (owlmail) == 0)
             {
                 System.out.println ("Unfortunately, this owl can't be accepted! Provide another owl to continue.");
-                System.out.print ("Email: ");
+                System.out.print ("Owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     runMenu ();
                 }
@@ -250,7 +250,7 @@ public class Main
         }
 
         String password = firstPassword;
-        student = new Student (username, email, password, fullName);
+        student = new Student (username, owlmail, password, fullName);
         Student.allStudents.add (student);
 
         System.out.println ("Success! You have successfully navigated the enchanted threshold. Await as the gates admit you to your realm.");
@@ -258,40 +258,40 @@ public class Main
         runMenu ();
     }
 
-    public static void signUpTeacher ()
+    public static void signUpProfessor ()
     {
         System.out.println (skipLine);
 
         System.out.println ("Hogwarts School Datacenter.");
-        System.out.println ("Teacher Sign Up");
+        System.out.println ("Professor Sign Up");
 
-        System.out.print ("Email: ");
-        String email = scanner.nextLine ();
-        if (email.equals ("esc"))
+        System.out.print ("Owlmail: ");
+        String owlmail = scanner.nextLine ();
+        if (owlmail.equals ("esc"))
         {
             runMenu ();
         }
 
-        while (Teacher.validateEmail (email) != 1)
+        while (Professor.validateOwlmail (owlmail) != 1)
         {
-            if (Teacher.validateEmail (email) == 2)
+            if (Professor.validateOwlmail (owlmail) == 2)
             {
                 System.out.println ("Unfortunately, this owl is already taken. Present a new owl, or sign in if you possess an existing account.");
-                System.out.print ("Email: ");
+                System.out.print ("Owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     runMenu ();
                 }
             }
-            else if (Teacher.validateEmail (email) == 0)
+            else if (Professor.validateOwlmail (owlmail) == 0)
             {
                 System.out.println ("Unfortunately, this owl can't be accepted! Provide another owl to continue.");
-                System.out.print ("Email: ");
+                System.out.print ("Owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     runMenu ();
                 }
@@ -305,9 +305,9 @@ public class Main
             runMenu ();
         }
 
-        while (Teacher.validateUserName (username) != 1)
+        while (Professor.validateUserName (username) != 1)
         {
-            if (Teacher.validateUserName (username) == 2)
+            if (Professor.validateUserName (username) == 2)
             {
                 System.out.println ("This name is already enscribed in the tome. Conjure forth a new one to claim as your own.");
                 System.out.print ("Username: ");
@@ -318,7 +318,7 @@ public class Main
                     runMenu ();
                 }
             }
-            else if (Teacher.validateUserName (username) == 0)
+            else if (Professor.validateUserName (username) == 0)
             {
                 System.out.println ("Your chosen moniker must be imbued with at least six enchanted characters. Bestow upon it a more potent charm and try anew.");
                 System.out.print ("Username: ");
@@ -345,9 +345,9 @@ public class Main
             runMenu ();
         }
 
-        while (Teacher.validatePassword (firstPassword, secondPassword) != 1)
+        while (Professor.validatePassword (firstPassword, secondPassword) != 1)
         {
-            if (Teacher.validatePassword (firstPassword, secondPassword) == 2)
+            if (Professor.validatePassword (firstPassword, secondPassword) == 2)
             {
                 System.out.println ("The incantations do not align! Speak your password once more to synchronize the enchantments.");
 
@@ -365,7 +365,7 @@ public class Main
                     runMenu ();
                 }
             }
-            else if (Teacher.validatePassword (firstPassword, secondPassword) == 0)
+            else if (Professor.validatePassword (firstPassword, secondPassword) == 0)
             {
                 System.out.println ("Magical defenses demand greater complexity! Forge a new password adorned with an uppercase incantation, a numerical talisman, and a special character charm.");
 
@@ -393,8 +393,8 @@ public class Main
         }
 
         String password = firstPassword;
-        TeacherRequest teacherRequest = new TeacherRequest (username, email, password, fullName);
-        teacherRequest.addRequest (teacherRequest);
+        ProfessorRequest professorRequest = new ProfessorRequest (username, owlmail, password, fullName);
+        professorRequest.addRequest (professorRequest);
 
         System.out.println ("Success! You're request has been made. Please wait as our Assistants review your request");
         sleep (1000);
@@ -408,33 +408,33 @@ public class Main
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Assistant Sign Up");
 
-        System.out.print ("Email: ");
-        String email = scanner.nextLine ();
-        if (email.equals ("esc"))
+        System.out.print ("Owlmail: ");
+        String owlmail = scanner.nextLine ();
+        if (owlmail.equals ("esc"))
         {
             runMenu ();
         }
 
-        while (Assistant.validateEmail (email) != 1)
+        while (Assistant.validateOwlmail (owlmail) != 1)
         {
-            if (Assistant.validateEmail (email) == 2)
+            if (Assistant.validateOwlmail (owlmail) == 2)
             {
                 System.out.println ("Unfortunately, this owl is already taken. Present a new owl, or sign in if you possess an existing account.");
-                System.out.print ("Email: ");
+                System.out.print ("Owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     runMenu ();
                 }
             }
-            else if (Assistant.validateEmail (email) == 0)
+            else if (Assistant.validateOwlmail (owlmail) == 0)
             {
                 System.out.println ("Unfortunately, this owl can't be accepted! Provide another owl to continue.");
-                System.out.print ("Email: ");
+                System.out.print ("Owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     runMenu ();
                 }
@@ -536,7 +536,7 @@ public class Main
         }
 
         String password = firstPassword;
-        AssistantRequest assistantRequest = new AssistantRequest (username, email, password, fullName);
+        AssistantRequest assistantRequest = new AssistantRequest (username, owlmail, password, fullName);
         assistantRequest.addRequest (assistantRequest);
 
         System.out.println ("Success! You're request has been made. Please wait as our Assistants review your request");
@@ -555,9 +555,9 @@ public class Main
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Sign In Menu");
         System.out.println ("1. Sign In as Student");
-        System.out.println ("2. Sign In as Teacher");
+        System.out.println ("2. Sign In as Professor");
         System.out.println ("3. Sign In as Assistant");
-        System.out.print ("Which option shall you choose: ");
+        System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
         scanner.nextLine ();
@@ -568,7 +568,7 @@ public class Main
                 signInStudent ();
                 break;
             case 2:
-                signInTeacher ();
+                signInProfessor ();
                 break;
             case 3:
                 signInAssistant ();
@@ -576,7 +576,7 @@ public class Main
             case 0:
                 return;
             default:
-                System.out.print ("Incorrect wand movement! Make another selection.");
+                System.out.print ("Invalid input. Please try again.");
                 sleep (2000);
                 signInMenu ();
                 break;
@@ -591,41 +591,41 @@ public class Main
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student Sign In");
 
-        System.out.print ("Email: ");
-        String email = scanner.nextLine ();
-        if (email.equals ("esc"))
+        System.out.print ("Owlmail: ");
+        String owlmail = scanner.nextLine ();
+        if (owlmail.equals ("esc"))
         {
             runMenu ();
         }
 
-        while (Student.validateEmail (email) != 2)
+        while (Student.validateOwlmail (owlmail) != 2)
         {
-            if (Student.validateEmail (email) == 1)
+            if (Student.validateOwlmail (owlmail) == 1)
             {
                 System.out.println ("The owl's journey finds no roost at this address. Provide a new own or sign up if you've yet to claim an account.");
-                System.out.print ("Email: ");
+                System.out.print ("Owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     runMenu ();
                 }
             }
-            else if (Student.validateEmail (email) == 0)
+            else if (Student.validateOwlmail (owlmail) == 0)
             {
                 System.out.println ("Unfortunately, this owl can't be accepted! Provide another owl to continue.");
-                System.out.print ("Email: ");
+                System.out.print ("Owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     runMenu ();
                 }
             }
         }
 
-        int userNumber = Student.findUserNumber (email);
-        student = Student.findStudentByEmail (email);
+        int userNumber = Student.findUserNumber (owlmail);
+        student = Student.findStudentByOwlmail (owlmail);
 
         System.out.print ("Password: ");
         String password = scanner.nextLine ();
@@ -661,67 +661,67 @@ public class Main
         System.out.println ("Success! You have successfully navigated the enchanted threshold. Await as the magical gates admit you to your realm.");
         sleep (1000);
 
-        student    = Student.findStudentByEmail (email);
-        teacher    = null;
+        student    = Student.findStudentByOwlmail (owlmail);
+        professor    = null;
         assistant  = null;
         userAccess = "Student";
         studentMenu ();
     }
 
-    public static void signInTeacher ()
+    public static void signInProfessor ()
     {
         System.out.println (skipLine);
 
         System.out.println ("Hogwarts School Datacenter.");
-        System.out.println ("Teacher Sign In");
+        System.out.println ("Professor Sign In");
 
-        System.out.print ("Email: ");
-        String email = scanner.nextLine ();
-        if (email.equals ("esc"))
+        System.out.print ("Owlmail: ");
+        String owlmail = scanner.nextLine ();
+        if (owlmail.equals ("esc"))
         {
             runMenu ();
         }
 
-        while (Teacher.validateEmail (email) != 2)
+        while (Professor.validateOwlmail (owlmail) != 2)
         {
-            if (Teacher.validateEmail (email) == 1)
+            if (Professor.validateOwlmail (owlmail) == 1)
             {
                 System.out.println ("The owl's journey finds no roost at this address. Provide a new own or sign up if you've yet to claim an account.");
-                System.out.print ("Email: ");
+                System.out.print ("Owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     runMenu ();
                 }
             }
-            else if (Teacher.validateEmail (email) == 0)
+            else if (Professor.validateOwlmail (owlmail) == 0)
             {
                 System.out.println ("Unfortunately, this owl can't be accepted! Provide another owl to continue.");
-                System.out.print ("Email: ");
+                System.out.print ("Owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     runMenu ();
                 }
             }
         }
 
-        int userNumber = Teacher.findUserNumber (email);
-        teacher = Teacher.findTeacherByEmail (email);
+        int userNumber = Professor.findUserNumber (owlmail);
+        professor = Professor.findProfessorByOwlmail (owlmail);
 
         System.out.print ("Password: ");
         String password = scanner.nextLine ();
         if (password.equals ("esc"))
         {
-            teacher = null;
+            professor = null;
             runMenu ();
         }
 
         int countOfIncorrectAttempts = 0;
 
-        while (! teacher.checkPassword (password, userNumber))
+        while (! professor.checkPassword (password, userNumber))
         {
             countOfIncorrectAttempts++;
             if (countOfIncorrectAttempts < 5)
@@ -737,7 +737,7 @@ public class Main
             password = scanner.nextLine ();
             if (password.equals ("esc"))
             {
-                teacher = null;
+                professor = null;
                 runMenu ();
             }
         }
@@ -745,11 +745,11 @@ public class Main
         System.out.println ("Success! You have successfully navigated the enchanted threshold. Await as the magical gates admit you to your realm.");
         sleep (1000);
 
-        teacher    = Teacher.findTeacherByEmail (email);
+        professor    = Professor.findProfessorByOwlmail (owlmail);
         student    = null;
         assistant  = null;
-        userAccess = "Teacher";
-        teacherMenu ();
+        userAccess = "Professor";
+        professorMenu ();
     }
 
     public static void signInAssistant ()
@@ -759,41 +759,41 @@ public class Main
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Assistant Sign In");
 
-        System.out.print ("Email: ");
-        String email = scanner.nextLine ();
-        if (email.equals ("esc"))
+        System.out.print ("Owlmail: ");
+        String owlmail = scanner.nextLine ();
+        if (owlmail.equals ("esc"))
         {
             runMenu ();
         }
 
-        while (Assistant.validateEmail (email) != 2)
+        while (Assistant.validateOwlmail (owlmail) != 2)
         {
-            if (Assistant.validateEmail (email) == 1)
+            if (Assistant.validateOwlmail (owlmail) == 1)
             {
                 System.out.println ("The owl's journey finds no roost at this address. Provide a new own or sign up if you've yet to claim an account.");
-                System.out.print ("Email: ");
+                System.out.print ("Owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     runMenu ();
                 }
             }
-            else if (Assistant.validateEmail (email) == 0)
+            else if (Assistant.validateOwlmail (owlmail) == 0)
             {
                 System.out.println ("Unfortunately, this owl can't be accepted! Provide another owl to continue.");
-                System.out.print ("Email: ");
+                System.out.print ("Owlmail: ");
 
-                email = scanner.nextLine ();
-                if (email.equals ("esc"))
+                owlmail = scanner.nextLine ();
+                if (owlmail.equals ("esc"))
                 {
                     runMenu ();
                 }
             }
         }
 
-        int userNumber = Assistant.findUserNumber (email);
-        assistant = Assistant.findAssistant (email);
+        int userNumber = Assistant.findUserNumber (owlmail);
+        assistant = Assistant.findAssistant (owlmail);
 
         System.out.print ("Password: ");
         String password = scanner.nextLine ();
@@ -829,9 +829,9 @@ public class Main
         System.out.println ("Success! You have successfully navigated the enchanted threshold. Await as the magical gates admit you to your realm.");
         sleep (1000);
 
-        assistant  = Assistant.findAssistant (email);
+        assistant  = Assistant.findAssistant (owlmail);
         student    = null;
-        teacher    = null;
+        professor    = null;
         userAccess = "Assistant";
         assistantMenu ();
     }
@@ -855,10 +855,10 @@ public class Main
         System.out.println ("1. Student account setting");
         System.out.println ("2. Take course");
         System.out.println ("3. View all taken courses");
-        System.out.println ("4. View all teachers");
+        System.out.println ("4. View all professors");
         System.out.println ("5. Take sorting quiz");
         System.out.println ("6. Log Out");
-        System.out.print ("Which option shall you choose: ");
+        System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
         scanner.nextLine ();
@@ -876,7 +876,7 @@ public class Main
                 break;
             case 4:
                 System.out.println (skipLine);
-                student.viewAllTeachers ();
+                student.viewAllProfessors ();
                 break;
             case 5:
                 student.takeSortingQuiz ();
@@ -887,33 +887,33 @@ public class Main
                 runMenu ();
                 break;
             default:
-                System.out.print ("Incorrect wand movement! Make another selection.");
+                System.out.print ("Invalid input. Please try again.");
                 sleep (2000);
                 break;
         }
         studentMenu ();
     }
 
-    public static void teacherMenu ()
+    public static void professorMenu ()
     {
-        if (teacher == null)
+        if (professor == null)
         {
             runMenu ();
         }
         System.out.println (skipLine);
 
         System.out.println ("Hogwarts School Datacenter.");
-        System.out.println ("Teacher Menu");
-        System.out.println ("Welcome Professor " + teacher.getFullName ());
-        System.out.println ("Teacher score: " + teacher.getScore () + " / 100");
+        System.out.println ("Professor Menu");
+        System.out.println ("Welcome Professor " + professor.getFullName ());
+        System.out.println ("Professor score: " + professor.getScore () + " / 100");
         System.out.println ();
-        System.out.println ("1. Teacher account setting");
+        System.out.println ("1. Professor account setting");
         System.out.println ("2. Take course");
         System.out.println ("3. Score students");
         System.out.println ("4. View Courses List");
         System.out.println ("5. View Course's List of Students");
         System.out.println ("6. Log Out");
-        System.out.print ("Which option shall you choose: ");
+        System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
         scanner.nextLine ();
@@ -921,33 +921,33 @@ public class Main
         switch (menuInput)
         {
             case 1:
-                teacher.accountSetting (teacher);
+                professor.accountSetting (professor);
                 break;
             case 2:
-                teacher.takeCourse (teacher);
+                professor.takeCourse (professor);
                 break;
             case 3:
-                teacher.selectCourse ();
+                professor.selectCourse ();
                 break;
             case 4:
-                teacher.viewAllCourses ();
+                professor.viewAllCourses ();
                 System.out.println ("Press Enter to Continue ");
                 scanner.nextLine ();
                 break;
             case 5:
-                teacher.selectCourseView ();
+                professor.selectCourseView ();
                 break;
             case 6:
                 userAccess = null;
-                teacher = null;
+                professor = null;
                 runMenu ();
                 break;
             default:
-                System.out.print ("Incorrect wand movement! Make another selection.");
+                System.out.print ("Invalid input. Please try again.");
                 sleep (2000);
                 break;
         }
-        teacherMenu ();
+        professorMenu ();
     }
 
     public static void assistantMenu ()
@@ -963,13 +963,13 @@ public class Main
         System.out.println ("Welcome Professor " + assistant.getFullName ());
         System.out.println ();
         System.out.println ("1. Assistant Account Setting");
-        System.out.println ("2. Review Teacher Requests");
+        System.out.println ("2. Review Professor Requests");
         System.out.println ("4. Create a Course");
         System.out.println ("5. View Courses List");
-        System.out.println ("6. View Teachers List");
-        System.out.println ("7. Remove a Teacher / Student");
+        System.out.println ("6. View Professors List");
+        System.out.println ("7. Remove a Professor / Student");
         System.out.println ("8. Log Out");
-        System.out.print ("Which option shall you choose: ");
+        System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
         scanner.nextLine ();
@@ -980,7 +980,7 @@ public class Main
                 assistant.accountSetting (assistant);
                 break;
             case 2:
-                Assistant.viewTeacherRequests ();
+                Assistant.viewProfessorRequests ();
                 break;
             case 3:
                 Assistant.viewAssistantRequests ();
@@ -995,8 +995,8 @@ public class Main
                 break;
             case 6:
                 System.out.println (skipLine);
-                System.out.println ("Teachers List: ");
-                Assistant.viewAllTeachers ();
+                System.out.println ("Professors List: ");
+                Assistant.viewAllProfessors ();
                 break;
             case 7:
                 Assistant.removeUser ();
@@ -1007,7 +1007,7 @@ public class Main
                 runMenu ();
                 break;
             default:
-                System.out.print ("Incorrect wand movement! Make another selection.");
+                System.out.print ("Invalid input. Please try again.");
                 sleep (2000);
                 break;
         }
@@ -1026,31 +1026,31 @@ public class Main
         Assistant Dumbledore = new Assistant ("Dumbledore1881", "Albus.Dumbledore@hogwarts.edu", "Ph0enixR!se21", "Albus Dumbledore");
         Assistant.addAssistant (Dumbledore);
 
-        generateTeachers ();
+        generateProfessors ();
         generateCourse ();
     }
 
-    public static void generateTeachers ()
+    public static void generateProfessors ()
     {
-        Teacher mcGonogall = new Teacher (
+        Professor mcGonogall = new Professor (
                 "TransfigurationMaestro", "Minerva.McGonagall@hogwarts.edu", "Gryffindor_L3ad3r", "Minerva McGonagall");
-        Teacher.addTeacher (mcGonogall);
+        Professor.addProfessor (mcGonogall);
 
-        Teacher flitwick = new Teacher (
+        Professor flitwick = new Professor (
                 "CharmMasterFlitwick", "Filius.Flitwick@hogwarts.edu", "Wingardium_L3vi0sa", "Filius Flitwick");
-        Teacher.addTeacher (flitwick);
+        Professor.addProfessor (flitwick);
 
-        Teacher snape = new Teacher (
+        Professor snape = new Professor (
                 "HalfBloodPrince", "Severus.Snape@hogwarts.edu", "Sectum_sempra78", "Severus Snape");
-        Teacher.addTeacher (snape);
+        Professor.addProfessor (snape);
 
-        Teacher binns = new Teacher (
+        Professor binns = new Professor (
                 "HistoryGhost", "Cuthbert.Binns@hogwarts.edu", "Eterna1Hist0ry!", "Cuthbert Binns");
-        Teacher.addTeacher (binns);
+        Professor.addProfessor (binns);
 
-        Teacher quirrell = new Teacher (
+        Professor quirrell = new Professor (
                 "TurbanedMaster", "Quirinus.Quirrell@hogwarts.edu", "DarkLord_Defeater69", "Quirinus Quirrell");
-        Teacher.addTeacher (quirrell);
+        Professor.addProfessor (quirrell);
     }
 
     public static void generateCourse ()
