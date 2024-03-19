@@ -64,7 +64,7 @@ public class Main
             case 2:
                 signInMenu (); //opens up sign in menu
             case 0:
-                return; //exits the program
+                System.exit (0); //exits the program
             default:
             {
                 System.out.print ("Invalid input. Please try again.");
@@ -121,7 +121,7 @@ public class Main
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student Sign Up");
-
+        System.out.println ();
         System.out.print ("Owlmail: ");
         String owlmail = scanner.nextLine ();
         if (owlmail.equals ("esc"))
@@ -264,7 +264,7 @@ public class Main
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Professor Sign Up");
-
+        System.out.println ();
         System.out.print ("Owlmail: ");
         String owlmail = scanner.nextLine ();
         if (owlmail.equals ("esc"))
@@ -407,7 +407,7 @@ public class Main
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Assistant Sign Up");
-
+        System.out.println ();
         System.out.print ("Owlmail: ");
         String owlmail = scanner.nextLine ();
         if (owlmail.equals ("esc"))
@@ -554,6 +554,7 @@ public class Main
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Sign In Menu");
+        System.out.println ();
         System.out.println ("1. Sign In as Student");
         System.out.println ("2. Sign In as Professor");
         System.out.println ("3. Sign In as Assistant");
@@ -590,7 +591,7 @@ public class Main
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student Sign In");
-
+        System.out.println ();
         System.out.print ("Owlmail: ");
         String owlmail = scanner.nextLine ();
         if (owlmail.equals ("esc"))
@@ -674,7 +675,7 @@ public class Main
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Professor Sign In");
-
+        System.out.println ();
         System.out.print ("Owlmail: ");
         String owlmail = scanner.nextLine ();
         if (owlmail.equals ("esc"))
@@ -758,7 +759,7 @@ public class Main
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Assistant Sign In");
-
+        System.out.println ();
         System.out.print ("Owlmail: ");
         String owlmail = scanner.nextLine ();
         if (owlmail.equals ("esc"))
