@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 import static java.lang.System.currentTimeMillis;
 
-public class Student extends User
+public class Student extends Account
 {
     static Scanner scanner = new Scanner (System.in);
     protected static String skipLine = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";

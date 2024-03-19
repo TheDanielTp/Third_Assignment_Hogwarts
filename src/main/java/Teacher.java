@@ -4,7 +4,7 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Teacher extends User
+public class Teacher extends Account
 {
     static           Scanner scanner  = new Scanner (System.in);
     protected static String  skipLine = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
