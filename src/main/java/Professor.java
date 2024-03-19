@@ -372,7 +372,7 @@ public class Professor extends Account
     {
         for (Professor professor : allProfessors)
         {
-            if (professor.owlmail.equals (owlmail))
+            if (professor.owlmail.equalsIgnoreCase (owlmail))
             {
                 return professor;
             }
@@ -384,7 +384,7 @@ public class Professor extends Account
     {
         for (Professor professor : allProfessors)
         {
-            if (professor.fullName.equals (fullName))
+            if (professor.fullName.equalsIgnoreCase (fullName))
             {
                 return professor;
             }
@@ -590,9 +590,9 @@ public class Professor extends Account
         String[] allUserNamesArray = new String[Professor.allUserNames.size ()];
         Professor.allUserNames.toArray (allUserNamesArray);
 
-        for (String s : allUserNamesArray)
+        for (String string : allUserNamesArray)
         {
-            if (userName.equals (s))
+            if (userName.equalsIgnoreCase (string))
             {
                 return 2;
             }
@@ -623,7 +623,7 @@ public class Professor extends Account
 
             for (String s : allOwlmailsArray)
             {
-                if (owlmail.equals (s))
+                if (owlmail.equalsIgnoreCase (s))
                 {
                     return 2;
                 }

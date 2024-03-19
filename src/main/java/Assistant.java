@@ -60,7 +60,7 @@ public class Assistant extends Account
     {
         for (Assistant assistant : allAssistants)
         {
-            if (assistant.owlmail.equals (owlmail))
+            if (assistant.owlmail.equalsIgnoreCase (owlmail))
             {
                 return assistant;
             }
@@ -720,7 +720,7 @@ public class Assistant extends Account
 
         for (String s : allUserNamesArray)
         {
-            if (userName.equals (s))
+            if (userName.equalsIgnoreCase (s))
             {
                 return 2;
             }
@@ -751,7 +751,7 @@ public class Assistant extends Account
 
             for (String s : allOwlmailsArray)
             {
-                if (owlmail.equals (s))
+                if (owlmail.equalsIgnoreCase (s))
                 {
                     return 2;
                 }

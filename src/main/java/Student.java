@@ -371,11 +371,11 @@ public class Student extends Account
 
     public static Student findStudentByOwlmail (String owlmail)
     {
-        for (Student s : allStudents)
+        for (Student student : allStudents)
         {
-            if (s.owlmail.equals (owlmail))
+            if (student.owlmail.equalsIgnoreCase (owlmail))
             {
-                return s;
+                return student;
             }
         }
         return null;
@@ -385,7 +385,7 @@ public class Student extends Account
     {
         for (Student s : allStudents)
         {
-            if (s.fullName.equals (fullName))
+            if (s.fullName.equalsIgnoreCase (fullName))
             {
                 return s;
             }
@@ -657,7 +657,7 @@ public class Student extends Account
 
         for (String s : allUserNamesArray)
         {
-            if (userName.equals (s))
+            if (userName.equalsIgnoreCase (s))
             {
                 return 2;
             }
@@ -688,7 +688,7 @@ public class Student extends Account
 
             for (String s : allOwlmailsArray)
             {
-                if (owlmail.equals (s))
+                if (owlmail.equalsIgnoreCase (s))
                 {
                     return 2;
                 }

@@ -1033,6 +1033,8 @@ public class Main
         Student danial = new Student ("TheDanielTp", "prof.danial4@hogwarts.edu", "D_patronus48", "Danial Taghipour");
         Student.addStudent (danial);
 
+        Student rana = new Student ("RanaRokni")
+
         Assistant Dumbledore = new Assistant ("Dumbledore1881", "Albus.Dumbledore@hogwarts.edu", "Ph0enixR!se21", "Albus Dumbledore");
         Assistant.addAssistant (Dumbledore);
 
