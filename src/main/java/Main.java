@@ -97,7 +97,7 @@ public class Main
         System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
-        scanner.nextLine ();
+        scanner.nextLine (); //consumes next line
 
         switch (menuInput)
         {
@@ -118,7 +118,7 @@ public class Main
                 signUpMenu ();
                 break;
         }
-        signUpMenu ();
+        signUpMenu (); //runs the menu in a loop
     }
 
     public static void signUpStudent ()
@@ -131,7 +131,7 @@ public class Main
         System.out.print ("Owlmail: ");
 
         String owlmail = scanner.nextLine ();
-        if (owlmail.equals ("esc"))
+        if (owlmail.equals ("esc")) //returns to the menu if user enters esc
         {
             runMenu ();
         }
