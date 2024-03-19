@@ -8,10 +8,10 @@ public class Hogwarts
     protected static String skipLine = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
     protected static ArrayList <Professor> allProfessors = new ArrayList <> ();
-    protected static ArrayList <Student> allStudents = new ArrayList <> ();
-    protected static ArrayList <Course>  allCourses  = new ArrayList <> ();
+    protected static ArrayList <Student>   allStudents   = new ArrayList <> ();
+    protected static ArrayList <Course>    allCourses    = new ArrayList <> ();
 
-    public static void rateTeacher(Student student)
+    public static void rateTeacher (Student student)
     {
         System.out.println (skipLine);
 
@@ -101,8 +101,8 @@ public class Hogwarts
     public static void setAttributes ()
     {
         allProfessors = Professor.allProfessors;
-        allStudents = Student.allStudents;
-        allCourses  = Course.allCourses;
+        allStudents   = Student.allStudents;
+        allCourses    = Course.allCourses;
     }
 
     public static void viewAllProfessors ()

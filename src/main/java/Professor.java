@@ -446,6 +446,17 @@ public class Professor extends Account
         }
     }
 
+    public void viewComments ()
+    {
+        System.out.println ("Comments List: ");
+        for (String string : commentsList)
+        {
+            System.out.println (string);
+        }
+        System.out.println ("Press Enter to Continue");
+        scanner.nextLine ();
+    }
+
     public void selectCourse ()
     {
         System.out.println (skipLine);

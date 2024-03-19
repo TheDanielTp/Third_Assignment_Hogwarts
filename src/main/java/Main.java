@@ -920,7 +920,8 @@ public class Main
         System.out.println ("3. Score students");
         System.out.println ("4. View Courses List");
         System.out.println ("5. View Course's List of Students");
-        System.out.println ("6. Log Out");
+        System.out.println ("6. View Comments");
+        System.out.println ("7. Log Out");
         System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
@@ -946,6 +947,8 @@ public class Main
                 professor.selectCourseView ();
                 break;
             case 6:
+                professor.viewComments ();
+            case 7:
                 userAccess = null;
                 professor = null;
                 runMenu ();
