@@ -61,7 +61,7 @@ public class Professor extends Account
 
     public void accountSetting (Professor professor)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Professor account setting");
@@ -97,7 +97,7 @@ public class Professor extends Account
 
     public void changeUsername (Professor professor)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Professor change username");
@@ -181,7 +181,7 @@ public class Professor extends Account
 
     public void changePassword (Professor professor)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student change password");
@@ -286,7 +286,7 @@ public class Professor extends Account
 
     public void changeOwlmail (Professor professor)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student change password");
@@ -398,7 +398,7 @@ public class Professor extends Account
 
     public void takeCourse (Professor professor)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Take Course Menu");
@@ -438,7 +438,7 @@ public class Professor extends Account
 
     public void viewAllCourses ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
         System.out.println ("Courses List:");
         for (Course course : coursesList)
         {
@@ -459,7 +459,7 @@ public class Professor extends Account
 
     public void selectCourse ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         viewAllCourses ();
         System.out.print ("Select Course: ");
@@ -488,7 +488,7 @@ public class Professor extends Account
 
     public void selectCourseView ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         viewAllCourses ();
         System.out.print ("Select Course: ");
@@ -513,7 +513,7 @@ public class Professor extends Account
         Course course = Course.findCourse (courseName);
         assert course != null;
 
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
         course.viewAllStudents ();
 
         System.out.println ("Press Enter to Continue ");
@@ -522,7 +522,7 @@ public class Professor extends Account
 
     public void scoreStudents (Course course)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
         course.viewAllStudents ();
         System.out.print ("Select Student: ");
 
@@ -546,7 +546,7 @@ public class Professor extends Account
         }
         Student student = Student.findStudentByName (fullName);
 
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
         if (course.findScore (fullName) != 0)
         {
             assert student != null;
@@ -561,7 +561,7 @@ public class Professor extends Account
         double score = scanner.nextDouble ();
         course.setScore (fullName, score);
 
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
         System.out.println ("1) Score another student");
         System.out.println ("2) Change course");
         System.out.println ("3) Return to menu");

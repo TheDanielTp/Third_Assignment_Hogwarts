@@ -20,10 +20,7 @@ public class Account implements AccountManagement
     protected UUID   accountID;
 
     protected static ArrayList <String> allUserNames  = new ArrayList <> ();
-    protected static ArrayList <String> allOwlmails   = new ArrayList <> ();
     protected static ArrayList <String> allPasswords  = new ArrayList <> ();
-    protected static ArrayList <UUID>   allAccountIDs = new ArrayList <> ();
-    protected static ArrayList <String> allFullNames  = new ArrayList <> ();
 
     public int SignIn (String userName, String password)
     {

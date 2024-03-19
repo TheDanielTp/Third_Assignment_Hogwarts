@@ -45,7 +45,7 @@ public class Main
 
     public static void runMenu ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Main Menu");
@@ -55,14 +55,20 @@ public class Main
         System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
-        scanner.nextLine ();
+        scanner.nextLine (); //consumes next line
 
         switch (menuInput)
         {
             case 1:
                 signUpMenu (); //opens up sign up menu
+                break;
             case 2:
                 signInMenu (); //opens up sign in menu
+                break;
+            case 69:
+                Hogwarts.viewHogwartsData (); //cracks open hogwarts information
+                scanner.nextLine ();
+                break;
             case 0:
                 System.exit (0); //exits the program
             default:
@@ -72,7 +78,7 @@ public class Main
                 runMenu ();
             }
         }
-        runMenu ();
+        runMenu (); //runs the menu in a loop
     }
 
     /*
@@ -81,7 +87,7 @@ public class Main
 
     public static void signUpMenu ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Sign Up Menu");
@@ -117,12 +123,13 @@ public class Main
 
     public static void signUpStudent ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student Sign Up");
         System.out.println ();
         System.out.print ("Owlmail: ");
+
         String owlmail = scanner.nextLine ();
         if (owlmail.equals ("esc"))
         {
@@ -261,7 +268,7 @@ public class Main
 
     public static void signUpProfessor ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Professor Sign Up");
@@ -405,7 +412,7 @@ public class Main
 
     public static void signUpAssistant ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Assistant Sign Up");
@@ -553,7 +560,7 @@ public class Main
 
     public static void signInMenu ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Sign In Menu");
@@ -590,7 +597,7 @@ public class Main
 
     public static void signInStudent ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student Sign In");
@@ -674,7 +681,7 @@ public class Main
 
     public static void signInProfessor ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Professor Sign In");
@@ -758,7 +765,7 @@ public class Main
 
     public static void signInAssistant ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Assistant Sign In");
@@ -850,7 +857,7 @@ public class Main
         {
             runMenu ();
         }
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student Menu");
@@ -880,11 +887,11 @@ public class Main
                 student.viewAllCourses ();
                 break;
             case 4:
-                System.out.println (skipLine);
+                System.out.println (skipLine); //clears the terminal screen
                 student.viewAllProfessors ();
                 break;
             case 5:
-                Hogwarts.rateProfessor (student);
+                Hogwarts.rateProfessor ();
                 break;
             case 6:
                 student.takeSortingQuiz ();
@@ -908,7 +915,7 @@ public class Main
         {
             runMenu ();
         }
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Professor Menu");
@@ -973,7 +980,7 @@ public class Main
         {
             runMenu ();
         }
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Assistant Menu");
@@ -1007,14 +1014,14 @@ public class Main
                 Assistant.createCourse ();
                 break;
             case 5:
-                System.out.println (skipLine);
+                System.out.println (skipLine); //clears the terminal screen
                 System.out.println ("Courses List: ");
                 Assistant.viewAllCourses ();
                 System.out.println ("Press Enter to Continue ");
                 scanner.nextLine ();
                 break;
             case 6:
-                System.out.println (skipLine);
+                System.out.println (skipLine); //clears the terminal screen
                 System.out.println ("Professors List: ");
                 Assistant.viewAllProfessors ();
                 System.out.println ("Press Enter to Continue ");

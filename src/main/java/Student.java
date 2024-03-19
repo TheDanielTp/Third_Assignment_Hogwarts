@@ -50,6 +50,9 @@ public class Student extends Account
 
         this.accountID = UUID.randomUUID ();
         Student.allAccountIDs.add (accountID);
+
+        this.tookSortingQuiz = false;
+        this.studentHouse = "Unassigned";
     }
 
     public static void addStudent (Student student)
@@ -63,7 +66,7 @@ public class Student extends Account
 
     public void accountSetting (Student student)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student account setting");
@@ -98,7 +101,7 @@ public class Student extends Account
 
     public void changeUsername (Student student)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student change username");
@@ -182,7 +185,7 @@ public class Student extends Account
 
     public void changePassword (Student student)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student change password");
@@ -287,7 +290,7 @@ public class Student extends Account
 
     public void changeOwlmail (Student student)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student change password");
@@ -399,7 +402,7 @@ public class Student extends Account
 
     public void takeCourse (Student student)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Take Course Menu");
@@ -439,7 +442,7 @@ public class Student extends Account
 
     public void viewAllCourses ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
         System.out.println ("Courses List:");
         for (Course course : coursesList)
         {
@@ -472,7 +475,7 @@ public class Student extends Account
         }
         else
         {
-            System.out.println (skipLine);
+            System.out.println (skipLine); //clears the terminal screen
 
             int ravenclawPoints = 0;
             int gryffindorPoints = 0;
@@ -608,7 +611,7 @@ public class Student extends Account
                 }
             }
 
-            System.out.println (skipLine);
+            System.out.println (skipLine); //clears the terminal screen
             tookSortingQuiz = true;
             int maxPoints = Math.max (ravenclawPoints, Math.max (gryffindorPoints, Math.max (slytherinPoints, hufflepuffPoints)));
 

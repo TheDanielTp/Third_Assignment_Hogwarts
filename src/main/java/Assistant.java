@@ -70,7 +70,7 @@ public class Assistant extends Account
 
     public void accountSetting (Assistant assistant)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Assistant account setting");
@@ -109,7 +109,7 @@ public class Assistant extends Account
 
     public void changeUsername (Assistant assistant)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student change username");
@@ -193,7 +193,7 @@ public class Assistant extends Account
 
     public void changePassword (Assistant assistant)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student change password");
@@ -298,7 +298,7 @@ public class Assistant extends Account
 
     public void changeOwlmail (Assistant assistant)
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Student change password");
@@ -386,7 +386,7 @@ public class Assistant extends Account
 
     public static void viewAssistantRequests ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Assistant Requests List: ");
         for (AssistantRequest assistantRequest : allAssistantRequests)
@@ -425,7 +425,7 @@ public class Assistant extends Account
 
     public static void viewProfessorRequests ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Professor Requests List: ");
         for (ProfessorRequest professorRequest : allProfessorRequests)
@@ -585,7 +585,7 @@ public class Assistant extends Account
 
     public static void removeUser ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Remove User Menu");
@@ -616,7 +616,7 @@ public class Assistant extends Account
 
     public static void removeStudent ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Students List: ");
         viewAllStudents ();
@@ -657,7 +657,7 @@ public class Assistant extends Account
 
     public static void removeProfessor ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Professors List: ");
         viewAllProfessors ();

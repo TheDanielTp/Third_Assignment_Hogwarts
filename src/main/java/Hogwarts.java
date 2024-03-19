@@ -12,9 +12,9 @@ public class Hogwarts
     protected static ArrayList <Course>    allCourses     = new ArrayList <> ();
     protected static ArrayList <String>    courseRequests = new ArrayList <> ();
 
-    public static void rateProfessor (Student student)
+    public static void rateProfessor ()
     {
-        System.out.println (skipLine);
+        System.out.println (skipLine); //clears the terminal screen
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Rating Menu");
@@ -117,6 +117,7 @@ public class Hogwarts
 
         System.out.println ("Full Name: " + student.fullName);
         System.out.println ("Username: " + student.userName);
+        System.out.println ("House: " + student.studentHouse);
         System.out.println ("Courses: ");
         student.viewAllCourses ();
         System.out.println ("Professors: ");
@@ -147,10 +148,13 @@ public class Hogwarts
     public static void viewHogwartsData ()
     {
         setAttributes ();
+        System.out.println (skipLine); //clears the terminal screen
         System.out.println ("Professors List:");
         viewAllProfessors ();
+        System.out.println ();
         System.out.println ("Students List:");
         viewAllStudents ();
+        System.out.println ();
         System.out.println ("Courses List: ");
         viewAllCourses ();
     }
