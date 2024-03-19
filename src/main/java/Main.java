@@ -8,7 +8,7 @@ public class Main
     static String userAccess = null;
 
     static Student   student;
-    static Professor   professor;
+    static Professor professor;
     static Assistant assistant;
 
     /*
@@ -224,7 +224,8 @@ public class Main
             }
             else if (Student.validatePassword (firstPassword, secondPassword) == 0)
             {
-                System.out.println ("Magical defenses demand greater complexity! Forge a new password adorned with an uppercase incantation, a numerical talisman, and a special character charm.");
+                System.out.println ("Magical defenses demand greater complexity! \n" +
+                        "Forge a new password adorned with an uppercase incantation, a numerical talisman, and a special character charm.");
 
                 System.out.print ("Password: ");
                 firstPassword = scanner.nextLine ();
@@ -367,7 +368,8 @@ public class Main
             }
             else if (Professor.validatePassword (firstPassword, secondPassword) == 0)
             {
-                System.out.println ("Magical defenses demand greater complexity! Forge a new password adorned with an uppercase incantation, a numerical talisman, and a special character charm.");
+                System.out.println ("Magical defenses demand greater complexity! \n" +
+                        "Forge a new password adorned with an uppercase incantation, a numerical talisman, and a special character charm.");
 
                 System.out.print ("Password: ");
                 firstPassword = scanner.nextLine ();
@@ -510,7 +512,8 @@ public class Main
             }
             else if (Assistant.validatePassword (firstPassword, secondPassword) == 0)
             {
-                System.out.println ("Magical defenses demand greater complexity! Forge a new password adorned with an uppercase incantation, a numerical talisman, and a special character charm.");
+                System.out.println ("Magical defenses demand greater complexity! \n" +
+                        "Forge a new password adorned with an uppercase incantation, a numerical talisman, and a special character charm.");
 
                 System.out.print ("Password: ");
                 firstPassword = scanner.nextLine ();
@@ -663,7 +666,7 @@ public class Main
         sleep (1000);
 
         student    = Student.findStudentByOwlmail (owlmail);
-        professor    = null;
+        professor  = null;
         assistant  = null;
         userAccess = "Student";
         studentMenu ();
@@ -746,7 +749,7 @@ public class Main
         System.out.println ("Success! You have successfully navigated the enchanted threshold. Await as the magical gates admit you to your realm.");
         sleep (1000);
 
-        professor    = Professor.findProfessorByOwlmail (owlmail);
+        professor  = Professor.findProfessorByOwlmail (owlmail);
         student    = null;
         assistant  = null;
         userAccess = "Professor";
@@ -832,7 +835,7 @@ public class Main
 
         assistant  = Assistant.findAssistant (owlmail);
         student    = null;
-        professor    = null;
+        professor  = null;
         userAccess = "Assistant";
         assistantMenu ();
     }
@@ -881,7 +884,7 @@ public class Main
                 student.viewAllProfessors ();
                 break;
             case 5:
-                Hogwarts.rateTeacher(student);
+                Hogwarts.rateTeacher (student);
                 break;
             case 6:
                 student.takeSortingQuiz ();
@@ -1030,16 +1033,47 @@ public class Main
 
     public static void generateUsers ()
     {
-        Student danial = new Student ("TheDanielTp", "prof.danial4@hogwarts.edu", "D_patronus48", "Danial Taghipour");
-        Student.addStudent (danial);
-
-        Student rana = new Student ("RanaRokni")
-
-        Assistant Dumbledore = new Assistant ("Dumbledore1881", "Albus.Dumbledore@hogwarts.edu", "Ph0enixR!se21", "Albus Dumbledore");
-        Assistant.addAssistant (Dumbledore);
-
+        generateAssistants ();
+        generateStudents ();
         generateProfessors ();
         generateCourse ();
+    }
+
+    public static void generateAssistants ()
+    {
+        Assistant albus = new Assistant (
+                "Dumbledore1881", "albus.dumbledore@hogwarts.edu", "Ph0enixR!se21", "Albus Dumbledore");
+        Assistant.addAssistant (albus);
+
+        Assistant salazar = new Assistant (
+                "SerpentSovereign", "salazar.slytherin@hogwarts.edu", "Pureblood_Serpent1042", "Salazar Slytherin");
+        Assistant.addAssistant (salazar);
+
+        Assistant godric = new Assistant (
+                "LionHeartGodric", "godric.gryffindor@hogwarts.edu", "Courageous_Lion1167", "Godric Gryffindor");
+        Assistant.addAssistant (godric);
+
+        Assistant helga = new Assistant (
+                "KindnessKeeper", "helga.hufflepuff@hogwarts.edu", "Hufflepuff_Hospitality980", "Helga Hufflepuff");
+        Assistant.addAssistant (helga);
+
+        Assistant rowena = new Assistant (
+                "RavenMind", "rowena.ravenclaw@hogwarts.edu", "Wise_Crow1020", "Rowena Ravenclaw");
+    }
+
+    public static void generateStudents ()
+    {
+        Student danial = new Student (
+                "TheDanielTp", "prof.danial4@hogwarts.edu", "D_patronus48", "Danial Taghipour");
+        Student.addStudent (danial);
+
+        Student rana = new Student (
+                "RanaRokni", "doctor.rana@hogwarts.edu", "Doctor_Rokni99", "Rana Rokni");
+        Student.addStudent (rana);
+
+        Student mahan = new Student (
+                "BladeOfMiquella", "mahan.madani@hogwarts.edu", "EldenL0rd!", "Mahan Madani");
+        Student.addStudent (mahan);
     }
 
     public static void generateProfessors ()
