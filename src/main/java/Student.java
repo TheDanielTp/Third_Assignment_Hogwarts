@@ -10,9 +10,10 @@ import static java.lang.System.currentTimeMillis;
 public class Student extends Account
 {
     static Scanner scanner = new Scanner (System.in);
+
     protected static String skipLine = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
-    protected static ArrayList <Student> allStudents  = new ArrayList <> ();
+    protected static ArrayList <Student> allStudents = new ArrayList <> ();
 
     protected boolean tookSortingQuiz;
     protected String  studentHouse;

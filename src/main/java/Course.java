@@ -7,7 +7,7 @@ public class Course
     protected UUID    courseID;
     protected Teacher teacher;
 
-    protected ArrayList <Student> studentsList   = new ArrayList <> ();
+    protected ArrayList <Student>      studentsList       = new ArrayList <> ();
     protected ArrayList <StudentScore> studentsScoresList = new ArrayList <> ();
 
     protected static ArrayList <String>  allTitles   = new ArrayList <> ();
@@ -60,7 +60,7 @@ public class Course
         studentsList.add (student);
         StudentScore studentScore = new StudentScore ();
         studentScore.fullName = student.fullName;
-        studentScore.score = 0;
+        studentScore.score    = 0;
         studentsScoresList.add (studentScore);
     }
 
@@ -68,7 +68,8 @@ public class Course
     {
         for (StudentScore studentScore : studentsScoresList)
         {
-            if (studentScore.fullName.equals (fullName)){
+            if (studentScore.fullName.equals (fullName))
+            {
                 studentScore.score = score;
             }
         }
@@ -78,7 +79,8 @@ public class Course
     {
         for (StudentScore studentScore : studentsScoresList)
         {
-            if (studentScore.fullName.equals (fullName)){
+            if (studentScore.fullName.equals (fullName))
+            {
                 return studentScore.score;
             }
         }

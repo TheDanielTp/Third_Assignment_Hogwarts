@@ -963,11 +963,11 @@ public class Main
         System.out.println ();
         System.out.println ("1. Assistant Account Setting");
         System.out.println ("2. Review Teacher Requests");
-        System.out.println ("3. Create a Course");
-        System.out.println ("4. View Courses List");
-        System.out.println ("5. View Teachers List");
-        System.out.println ("6. Remove a Teacher / Student");
-        System.out.println ("7. Log Out");
+        System.out.println ("4. Create a Course");
+        System.out.println ("5. View Courses List");
+        System.out.println ("6. View Teachers List");
+        System.out.println ("7. Remove a Teacher / Student");
+        System.out.println ("8. Log Out");
         System.out.print ("Which option shall you choose: ");
 
         int menuInput = scanner.nextInt ();
@@ -982,22 +982,25 @@ public class Main
                 Assistant.viewTeacherRequests ();
                 break;
             case 3:
-                Assistant.createCourse ();
+                Assistant.viewAssistantRequests ();
                 break;
             case 4:
+                Assistant.createCourse ();
+                break;
+            case 5:
                 System.out.println (skipLine);
                 System.out.println ("Courses List: ");
                 Assistant.viewAllCourses ();
                 break;
-            case 5:
+            case 6:
                 System.out.println (skipLine);
                 System.out.println ("Teachers List: ");
                 Assistant.viewAllTeachers ();
                 break;
-            case 6:
+            case 7:
                 Assistant.removeUser ();
                 break;
-            case 7:
+            case 8:
                 userAccess = null;
                 assistant = null;
                 runMenu ();

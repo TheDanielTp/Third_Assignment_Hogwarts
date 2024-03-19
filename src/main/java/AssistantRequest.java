@@ -8,7 +8,7 @@ public class AssistantRequest
     public AssistantRequest (String userName, String email, String password, String fullName)
     {
         this.userName = userName;
-        this.email = email;
+        this.email    = email;
         this.password = password;
         this.fullName = fullName;
     }
@@ -18,7 +18,7 @@ public class AssistantRequest
         Assistant.allAssistantRequests.add (assistantRequest);
     }
 
-    public static AssistantRequest findRequest(String fullName)
+    public static AssistantRequest findRequest (String fullName)
     {
         for (AssistantRequest assistantRequest : Assistant.allAssistantRequests)
         {

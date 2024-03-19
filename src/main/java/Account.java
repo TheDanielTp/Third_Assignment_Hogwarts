@@ -11,9 +11,9 @@ public class Account implements AccountManagement
 {
     Scanner scanner = new Scanner (System.in);
 
-    static String skipLine   = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+    static String skipLine = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
-    protected String  userName;
+    protected String userName;
     protected String email;
     protected String password;
     protected String fullName;
@@ -23,7 +23,7 @@ public class Account implements AccountManagement
     protected static ArrayList <String> allEmails     = new ArrayList <> ();
     protected static ArrayList <String> allPasswords  = new ArrayList <> ();
     protected static ArrayList <UUID>   allAccountIDs = new ArrayList <> ();
-    protected static ArrayList <String>  allFullNames = new ArrayList <> ();
+    protected static ArrayList <String> allFullNames  = new ArrayList <> ();
 
     public int SignIn (String userName, String password)
     {
@@ -99,12 +99,12 @@ public class Account implements AccountManagement
         return 1;
     }
 
-    public void changeUsername (User user)
+    public void changeUsername (Account account)
     {
         return;
     }
 
-    public void changePassword (User user)
+    public void changePassword (Account account)
     {
         return;
     }

@@ -6,8 +6,9 @@ import java.util.regex.Pattern;
 
 public class Assistant extends Account
 {
-    static           Scanner scanner  = new Scanner (System.in);
-    protected static String  skipLine = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+    static Scanner scanner = new Scanner (System.in);
+
+    protected static String skipLine = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
     protected static ArrayList <Assistant>        allAssistants        = new ArrayList <> ();
     protected static ArrayList <AssistantRequest> allAssistantRequests = new ArrayList <> ();

@@ -5,7 +5,7 @@ public interface AccountManagement
         return 0;
     }
 
-    public void changeUsername (User user);
+    public void changeUsername (Account account);
 
-    public void changePassword (User user);
+    public void changePassword (Account account);
 }

@@ -8,7 +8,7 @@ public class TeacherRequest
     public TeacherRequest (String userName, String email, String password, String fullName)
     {
         this.userName = userName;
-        this.email = email;
+        this.email    = email;
         this.password = password;
         this.fullName = fullName;
     }
@@ -18,7 +18,7 @@ public class TeacherRequest
         Assistant.allTeacherRequests.add (teacherRequest);
     }
 
-    public static TeacherRequest findRequest(String fullName)
+    public static TeacherRequest findRequest (String fullName)
     {
         for (TeacherRequest teacherRequest : Assistant.allTeacherRequests)
         {
