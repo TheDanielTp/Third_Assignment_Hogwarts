@@ -17,8 +17,8 @@ public class Main
 
     public static void main (String[] args)
     {
-        generateUsers ();
-        runMenu ();
+        generateUsers (); //generates pre-designed users
+        runMenu (); //opens main menu
     }
 
     public static void slowPrint (String text, int time)
@@ -49,6 +49,7 @@ public class Main
 
         System.out.println ("Hogwarts School Datacenter.");
         System.out.println ("Main Menu");
+        System.out.println ();
         System.out.println ("1. Sign Up");
         System.out.println ("2. Sign in");
         System.out.print ("Which option shall you choose: ");
@@ -59,11 +60,11 @@ public class Main
         switch (menuInput)
         {
             case 1:
-                signUpMenu ();
+                signUpMenu (); //opens up sign up menu
             case 2:
-                signInMenu ();
+                signInMenu (); //opens up sign in menu
             case 0:
-                return;
+                return; //exits the program
             default:
             {
                 System.out.print ("Incorrect wand movement! Make another selection.");

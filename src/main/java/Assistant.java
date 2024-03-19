@@ -561,7 +561,7 @@ public class Assistant extends Account
         System.out.println ();
         System.out.println ("1. Student");
         System.out.println ("2. Teacher");
-        System.out.print ("Enter your choice: ");
+        System.out.print ("Which option shall you choose: ");
 
         int input = scanner.nextInt ();
         scanner.nextLine ();
@@ -575,7 +575,7 @@ public class Assistant extends Account
             case 0:
                 return;
             default:
-                System.out.println ("Invalid input. Please try again.");
+                System.out.println ("Incorrect wand movement! Make another selection.");
                 removeUser ();
         }
     }
@@ -596,7 +596,7 @@ public class Assistant extends Account
 
         while (Student.findStudentByName (fullName) == null)
         {
-            System.out.println ("Student not found. Please try again.");
+            System.out.println ("There's no record of such student in archives. Please try again.");
             System.out.print ("Enter the name of the student: ");
 
             fullName = scanner.nextLine ();
@@ -634,7 +634,7 @@ public class Assistant extends Account
 
         while (Teacher.findTeacherByName (fullName) == null)
         {
-            System.out.println ("Teacher not found. Please try again.");
+            System.out.println ("There's no record of such professor in archives. Please try again.");
             System.out.print ("Enter the name of the teacher: ");
 
             fullName = scanner.nextLine ();
