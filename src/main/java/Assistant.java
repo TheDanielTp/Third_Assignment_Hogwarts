@@ -92,8 +92,12 @@ public class Assistant extends Account
             case 3:
                 assistant.changeOwlmail (assistant);
                 break;
-            default:
+            case 0:
                 return;
+            default:
+                System.out.print ("Invalid input. Please try again.");
+                Main.sleep (2000);
+                accountSetting (assistant);
         }
     }
 
