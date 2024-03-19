@@ -2,11 +2,18 @@ import java.security.NoSuchAlgorithmException;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class Account
+public class Account implements AccountManagement
 {
-    protected String userName;
+    Scanner scanner = new Scanner (System.in);
+
+    static String skipLine   = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+
+    protected String  userName;
     protected String email;
     protected String password;
     protected String fullName;
@@ -16,6 +23,7 @@ public class Account
     protected static ArrayList <String> allEmails     = new ArrayList <> ();
     protected static ArrayList <String> allPasswords  = new ArrayList <> ();
     protected static ArrayList <UUID>   allAccountIDs = new ArrayList <> ();
+    protected static ArrayList <String>  allFullNames = new ArrayList <> ();
 
     public int SignIn (String userName, String password)
     {
@@ -70,5 +78,34 @@ public class Account
             e.printStackTrace ();
             return null;
         }
+    }
+
+    public static int validatePassword (String firstPassword, String secondPassword)
+    {
+        if (! firstPassword.equals (secondPassword))
+        {
+            return 2;
+        }
+
+        String regex = "^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$";
+
+        Pattern pattern = Pattern.compile (regex);
+        Matcher matcher = pattern.matcher (firstPassword);
+
+        if (matcher.find ())
+        {
+            return 0;
+        }
+        return 1;
+    }
+
+    public void changeUsername (User user)
+    {
+        return;
+    }
+
+    public void changePassword (User user)
+    {
+        return;
     }
 }

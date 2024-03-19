@@ -17,21 +17,7 @@ public class Main
 
     public static void main (String[] args)
     {
-        student = new Student ("TheDanielTp", "prof.danial4@gmail.com", "Tdtp3148_P", "Danial Taghipour");
-        Student.addStudent (student);
-
-        Teacher Snape = new Teacher ("Snape", "prof.snape@gmail.com", "Snape_0U0", "Severus Snape");
-        Teacher.addTeacher (Snape);
-
-        Course course = new Course ("Defense against Dark Arts", Snape);
-        Course.forceTeacher (course, Snape);
-        Course.allCourses.add (course);
-
-        Course course2 = new Course ("Potions");
-        Course.allCourses.add (course2);
-
-        Assistant Dumbledore = new Assistant ("Dumbledore1881", "Albus.Dumbledore@hogwarts.edu", "Ph0enixR!se21", "Albus Dumbledore");
-        Assistant.addAssistant (Dumbledore);
+        generateUsers ();
         runMenu ();
     }
 
@@ -1022,5 +1008,68 @@ public class Main
                 break;
         }
         assistantMenu ();
+    }
+
+    /*
+    START-UP FUNCTIONS
+    */
+
+    public static void generateUsers ()
+    {
+        Student danial = new Student ("TheDanielTp", "prof.danial4@hogwarts.edu", "D_patronus48", "Danial Taghipour");
+        Student.addStudent (student);
+
+        Assistant Dumbledore = new Assistant ("Dumbledore1881", "Albus.Dumbledore@hogwarts.edu", "Ph0enixR!se21", "Albus Dumbledore");
+        Assistant.addAssistant (Dumbledore);
+
+        generateTeachers ();
+        generateCourse ();
+    }
+
+    public static void generateTeachers ()
+    {
+        Teacher mcGonogall = new Teacher (
+                "TransfigurationMaestro", "Minerva.McGonagall@hogwarts.edu", "Gryffindor_L3ad3r", "Minerva McGonagall");
+        Teacher.addTeacher (mcGonogall);
+
+        Teacher flitwick = new Teacher (
+                "CharmMasterFlitwick", "Filius.Flitwick@hogwarts.edu", "Wingardium_L3vi0sa", "Filius Flitwick");
+        Teacher.addTeacher (flitwick);
+
+        Teacher snape = new Teacher (
+                "HalfBloodPrince", "Severus.Snape@hogwarts.edu", "Sectum_sempra78", "Severus Snape");
+        Teacher.addTeacher (snape);
+
+        Teacher binns = new Teacher (
+                "HistoryGhost", "Cuthbert.Binns@hogwarts.edu", "Eterna1Hist0ry!", "Cuthbert Binns");
+        Teacher.addTeacher (binns);
+
+        Teacher quirrell = new Teacher (
+                "TurbanedMaster", "Quirinus.Quirrell@hogwarts.edu", "DarkLord_Defeater69", "Quirinus Quirrell");
+        Teacher.addTeacher (quirrell);
+    }
+
+    public static void generateCourse ()
+    {
+        Course transfiguration = new Course ("Transfiguration");
+        Course.allCourses.add (transfiguration);
+
+        Course charms = new Course ("Charms");
+        Course.allCourses.add (charms);
+
+        Course potions = new Course ("Potions");
+        Course.allCourses.add (potions);
+
+        Course historyOfMagic = new Course ("History of Magic");
+        Course.allCourses.add (historyOfMagic);
+
+        Course defenseAgainstDarkArts = new Course ("Defence Against the Dark Arts");
+        Course.allCourses.add (defenseAgainstDarkArts);
+
+        Course astronomyAndHerbology = new Course ("Astronomy and Herbology");
+        Course.allCourses.add (astronomyAndHerbology);
+
+        Course flyingLessons = new Course ("Flying Lessons");
+        Course.allCourses.add (flyingLessons);
     }
 }
