@@ -7,11 +7,12 @@ public class Hogwarts
 
     protected static String skipLine = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
-    protected static ArrayList <Professor> allProfessors = new ArrayList <> ();
-    protected static ArrayList <Student>   allStudents   = new ArrayList <> ();
-    protected static ArrayList <Course>    allCourses    = new ArrayList <> ();
+    protected static ArrayList <Professor> allProfessors  = new ArrayList <> ();
+    protected static ArrayList <Student>   allStudents    = new ArrayList <> ();
+    protected static ArrayList <Course>    allCourses     = new ArrayList <> ();
+    protected static ArrayList <String>    courseRequests = new ArrayList <> ();
 
-    public static void rateTeacher (Student student)
+    public static void rateProfessor (Student student)
     {
         System.out.println (skipLine);
 
@@ -83,9 +84,65 @@ public class Hogwarts
         Main.sleep (1000);
     }
 
+    public static void viewStudentInfo ()
+    {
+        setAttributes ();
+        System.out.println ("Hogwarts School Datacenter.");
+        System.out.println ("Students Information");
+        System.out.println ();
+        System.out.println ("Students List: ");
+        viewAllStudents ();
+        System.out.print ("Enter the name of the student: ");
+
+        String fullName = scanner.nextLine ();
+        if (fullName.equals ("esc"))
+        {
+            return;
+        }
+
+        while (Student.findStudentByName (fullName) == null)
+        {
+            System.out.println ("There's no record of such student in archives. Please try again.");
+            System.out.print ("Enter the name of the student: ");
+
+            fullName = scanner.nextLine ();
+            if (fullName.equals ("esc"))
+            {
+                return;
+            }
+        }
+
+        Student student = Student.findStudentByName (fullName);
+        assert student != null;
+
+        System.out.println ("Full Name: " + student.fullName);
+        System.out.println ("Username: " + student.userName);
+        System.out.println ("Courses: ");
+        student.viewAllCourses ();
+        System.out.println ("Professors: ");
+        student.viewAllProfessors ();
+        System.out.println ("Owlmail: " + student.owlmail);
+
+        System.out.println ("Press Enter to Continue.");
+        scanner.nextLine ();
+    }
+
+    public static void requestCourse ()
+    {
+        System.out.println ("Hogwarts School Datacenter.");
+        System.out.println ("Students Information");
+        System.out.println ();
+        System.out.println ("Course name: ");
+
+        String title = scanner.nextLine ();
+        courseRequests.add (title);
+        System.out.println ("Request added successfully. Returning to menu.");
+        Main.sleep (1000);
+    }
+
     /*
-    VIEWING FUNCTIONS
-     */
+    GLOBAL FUNCTIONS
+    */
 
     public static void viewHogwartsData ()
     {

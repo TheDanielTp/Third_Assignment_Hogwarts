@@ -856,11 +856,11 @@ public class Main
         System.out.println ("Student Menu");
         System.out.println ("Welcome Mx. " + student.getFullName ());
         System.out.println ();
-        System.out.println ("1. Student account setting");
-        System.out.println ("2. Take course");
-        System.out.println ("3. View all taken courses");
-        System.out.println ("4. View all professors");
-        System.out.println ("5. Rate Teachers");
+        System.out.println ("1. Student Account Setting");
+        System.out.println ("2. Take Course");
+        System.out.println ("3. View all taken Courses");
+        System.out.println ("4. View all Professors");
+        System.out.println ("5. Rate Professors");
         System.out.println ("6. Take sorting quiz");
         System.out.println ("7. Log Out");
         System.out.print ("Enter your choice: ");
@@ -884,7 +884,7 @@ public class Main
                 student.viewAllProfessors ();
                 break;
             case 5:
-                Hogwarts.rateTeacher (student);
+                Hogwarts.rateProfessor (student);
                 break;
             case 6:
                 student.takeSortingQuiz ();
@@ -915,13 +915,15 @@ public class Main
         System.out.println ("Welcome Professor " + professor.getFullName ());
         System.out.println ("Professor score: " + professor.getScore () + " / 100");
         System.out.println ();
-        System.out.println ("1. Professor account setting");
-        System.out.println ("2. Take course");
-        System.out.println ("3. Score students");
+        System.out.println ("1. Professor Account Setting");
+        System.out.println ("2. Take Course");
+        System.out.println ("3. Score Students");
         System.out.println ("4. View Courses List");
         System.out.println ("5. View Course's List of Students");
         System.out.println ("6. View Comments");
-        System.out.println ("7. Log Out");
+        System.out.println ("7. View Student Information");
+        System.out.println ("8. Request Course");
+        System.out.println ("9. Log Out");
         System.out.print ("Enter your choice: ");
 
         int menuInput = scanner.nextInt ();
@@ -949,6 +951,10 @@ public class Main
             case 6:
                 professor.viewComments ();
             case 7:
+                Hogwarts.viewStudentInfo ();
+            case 8:
+                Hogwarts.requestCourse ();
+            case 9:
                 userAccess = null;
                 professor = null;
                 runMenu ();

@@ -393,7 +393,7 @@ public class Professor extends Account
     }
 
     /*
-    TEACHER FUNCTIONS
+    PROFESSOR FUNCTIONS
     */
 
     public void takeCourse (Professor professor)
