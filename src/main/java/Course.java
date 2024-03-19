@@ -3,16 +3,16 @@ import java.util.UUID;
 
 public class Course
 {
-    protected String  title;
-    protected UUID    courseID;
+    protected String    title;
+    protected UUID      courseID;
     protected Professor professor;
 
     protected ArrayList <Student>      studentsList       = new ArrayList <> ();
     protected ArrayList <StudentScore> studentsScoresList = new ArrayList <> ();
 
-    protected static ArrayList <String>  allTitles   = new ArrayList <> ();
+    protected static ArrayList <String>    allTitles     = new ArrayList <> ();
     protected static ArrayList <Professor> allProfessors = new ArrayList <> ();
-    protected static ArrayList <Course>  allCourses  = new ArrayList <> ();
+    protected static ArrayList <Course>    allCourses    = new ArrayList <> ();
 
     /*
     CONSTRUCTOR FUNCTIONS
