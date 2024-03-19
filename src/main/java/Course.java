@@ -45,6 +45,12 @@ public class Course
         allTeachers.add (teacher);
     }
 
+    public static void forceTeacher (Course course, Teacher teacher)
+    {
+        teacher.coursesList.add (course);
+        allTeachers.add (teacher);
+    }
+
     /*
     COURSE FUNCTIONS
     */

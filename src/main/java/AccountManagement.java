@@ -1,5 +1,11 @@
-public interface AccountManagement {
-    public boolean validatePassword(String enteredPassword);
-    public void changeUsername(String newUsername);
-    public void changePassword(String newPassword);
+public interface AccountManagement
+{
+    public static int validatePassword (String firstPassword, String secondPassword)
+    {
+        return 0;
+    }
+
+    public void changeUsername (Student student);
+
+    public void changePassword (Student student);
 }

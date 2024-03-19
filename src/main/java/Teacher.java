@@ -6,12 +6,12 @@ import java.util.regex.Pattern;
 
 public class Teacher extends User
 {
-    Scanner scanner = new Scanner (System.in);
-    protected static String skipLine = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+    static           Scanner scanner  = new Scanner (System.in);
+    protected static String  skipLine = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
-    protected static ArrayList <Teacher> allTeachers  = new ArrayList <> ();
+    protected static ArrayList <Teacher> allTeachers = new ArrayList <> ();
 
-    protected int    score;
+    protected     int    score;
     private final byte[] salt;
 
     protected ArrayList <Course> coursesList = new ArrayList <> ();
@@ -101,6 +101,7 @@ public class Teacher extends User
         {
             return;
         }
+        password = hashPassword (password, teacher.salt);
 
         int countOfIncorrectAttempts = 0;
 
@@ -122,6 +123,7 @@ public class Teacher extends User
             {
                 return;
             }
+            password = hashPassword (password, teacher.salt);
         }
 
         System.out.print ("New username: ");
@@ -164,7 +166,7 @@ public class Teacher extends User
                 allUserNames.set (i, userName);
             }
         }
-        teacher.password = userName;
+        teacher.userName = userName;
 
         System.out.println ("Username changed successfully");
         Main.sleep (1000);
@@ -183,6 +185,7 @@ public class Teacher extends User
         {
             return;
         }
+        password = hashPassword (password, teacher.salt);
 
         int countOfIncorrectAttempts = 0;
 
@@ -204,6 +207,7 @@ public class Teacher extends User
             {
                 return;
             }
+            password = hashPassword (password, teacher.salt);
         }
 
         System.out.print ("New Password: ");
@@ -264,10 +268,10 @@ public class Teacher extends User
         {
             if (password.equals (allPasswords.get (i)))
             {
-                allPasswords.set (i, firstPassword);
+                allPasswords.set (i, hashPassword (firstPassword, teacher.salt));
             }
         }
-        teacher.password = firstPassword;
+        teacher.password = hashPassword (firstPassword, teacher.salt);
 
         System.out.println ("Password changed successfully");
         Main.sleep (1000);
@@ -286,6 +290,7 @@ public class Teacher extends User
         {
             return;
         }
+        password = hashPassword (password, teacher.salt);
 
         int countOfIncorrectAttempts = 0;
 
@@ -307,6 +312,7 @@ public class Teacher extends User
             {
                 return;
             }
+            password = hashPassword (password, teacher.salt);
         }
 
         System.out.print ("New email: ");
@@ -355,11 +361,23 @@ public class Teacher extends User
         Main.sleep (1000);
     }
 
-    public static Teacher findTeacher (String email)
+    public static Teacher findTeacherByEmail (String email)
     {
         for (Teacher teacher : allTeachers)
         {
             if (teacher.email.equals (email))
+            {
+                return teacher;
+            }
+        }
+        return null;
+    }
+
+    public static Teacher findTeacherByName (String fullName)
+    {
+        for (Teacher teacher : allTeachers)
+        {
+            if (teacher.fullName.equals (fullName))
             {
                 return teacher;
             }
@@ -514,7 +532,7 @@ public class Teacher extends User
         if (course.findScore (fullName) != 0)
         {
             assert student != null;
-            System.out.print (student.fullName + "'s Score is" + course.findScore (fullName) + ". Enter the new score: ");
+            System.out.print (student.fullName + "'s Score is " + course.findScore (fullName) + ". Enter the new score: ");
         }
         else
         {
@@ -526,12 +544,13 @@ public class Teacher extends User
         course.setScore (fullName, score);
 
         System.out.println (skipLine);
-        System.out.print ("1) Score another student");
-        System.out.print ("2) Change course");
-        System.out.print ("3) Return to menu");
+        System.out.println ("1) Score another student");
+        System.out.println ("2) Change course");
+        System.out.println ("3) Return to menu");
         System.out.print ("Which option shall you choose: ");
 
         int input = scanner.nextInt ();
+        scanner.nextLine ();
         switch (input)
         {
             case 1:
@@ -539,7 +558,7 @@ public class Teacher extends User
             case 2:
                 selectCourse ();
             case 3:
-                return;
+                Main.teacherMenu ();
             default:
                 scoreStudents (course);
         }

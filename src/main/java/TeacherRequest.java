@@ -15,6 +15,18 @@ public class TeacherRequest
 
     public void addRequest (TeacherRequest teacherRequest)
     {
-        Assistant.allRequests.add (teacherRequest);
+        Assistant.allTeacherRequests.add (teacherRequest);
+    }
+
+    public static TeacherRequest findRequest(String fullName)
+    {
+        for (TeacherRequest teacherRequest : Assistant.allTeacherRequests)
+        {
+            if (teacherRequest.fullName.equals (fullName))
+            {
+                return teacherRequest;
+            }
+        }
+        return null;
     }
 }

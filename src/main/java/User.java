@@ -2,11 +2,14 @@ import java.security.NoSuchAlgorithmException;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.UUID;
 
 public class User
 {
-    protected String userName;
+    Scanner scanner = new Scanner (System.in);
+
+    protected String  userName;
     protected String email;
     protected String password;
     protected String fullName;

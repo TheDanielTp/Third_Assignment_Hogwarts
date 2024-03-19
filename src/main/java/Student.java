@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 
 import static java.lang.System.currentTimeMillis;
 
-public class Student extends User
+public class Student extends User implements AccountManagement
 {
-    Scanner scanner = new Scanner (System.in);
+    static Scanner scanner = new Scanner (System.in);
     protected static String skipLine = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
     protected static ArrayList <Student> allStudents  = new ArrayList <> ();
@@ -103,6 +103,7 @@ public class Student extends User
         {
             return;
         }
+        password = hashPassword (password, student.salt);
 
         int countOfIncorrectAttempts = 0;
 
@@ -124,6 +125,7 @@ public class Student extends User
             {
                 return;
             }
+            password = hashPassword (password, student.salt);
         }
 
         System.out.print ("New username: ");
@@ -166,7 +168,7 @@ public class Student extends User
                 allUserNames.set (i, userName);
             }
         }
-        student.password = userName;
+        student.userName = userName;
 
         System.out.println ("Username changed successfully");
         Main.sleep (1000);
@@ -185,6 +187,7 @@ public class Student extends User
         {
             return;
         }
+        password = hashPassword (password, student.salt);
 
         int countOfIncorrectAttempts = 0;
 
@@ -206,6 +209,7 @@ public class Student extends User
             {
                 return;
             }
+            password = hashPassword (password, student.salt);
         }
 
         System.out.print ("New Password: ");
@@ -266,10 +270,10 @@ public class Student extends User
         {
             if (password.equals (allPasswords.get (i)))
             {
-                allPasswords.set (i, firstPassword);
+                allPasswords.set (i, hashPassword (firstPassword, student.salt));
             }
         }
-        student.password = firstPassword;
+        student.password = hashPassword (firstPassword, student.salt);
 
         System.out.println ("Password changed successfully");
         Main.sleep (1000);
@@ -288,6 +292,7 @@ public class Student extends User
         {
             return;
         }
+        password = hashPassword (password, student.salt);
 
         int countOfIncorrectAttempts = 0;
 
@@ -309,6 +314,7 @@ public class Student extends User
             {
                 return;
             }
+            password = hashPassword (password, student.salt);
         }
 
         System.out.print ("New email: ");
@@ -457,7 +463,6 @@ public class Student extends User
         {
             System.out.println ("Once sorted, forever bound. Alas, you cannot partake in the Sorting Quiz twice, young wizard.");
             Main.sleep (5000);
-            return;
         }
         else
         {
